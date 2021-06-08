@@ -19,4 +19,5 @@
 
 ---
 
+[getting started](https://www.raspberrypi.org/documentation/rp2040/getting-started/)
 [pico-examples](https://github.com/raspberrypi/pico-examples)
