@@ -6,7 +6,7 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2021-06-09 16:48:34
 
-Description: LED灯闪烁
+Description: LED灯闪烁并打印语句（包括随机数字前缀）
 """
 
 import random
