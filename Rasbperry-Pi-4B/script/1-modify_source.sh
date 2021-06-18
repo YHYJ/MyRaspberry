@@ -73,6 +73,9 @@ function versionInfo() {
 ####################################################################
 #++++++++++++++++++++++++++++++ Main ++++++++++++++++++++++++++++++#
 ####################################################################
+TEMP=$(getopt --options "d:p:chv" --longoptions "dir:,port:,card,help,version" -n "$name" -- "$@")
+eval set -- "$TEMP"
+
 case $1 in
   -h | --help)
     helpInfo
