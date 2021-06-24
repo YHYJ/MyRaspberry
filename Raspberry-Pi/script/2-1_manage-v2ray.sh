@@ -72,7 +72,7 @@ function versionInfo() {
 ####################################################################
 #++++++++++++++++++++++++++++++ Main ++++++++++++++++++++++++++++++#
 ####################################################################
-if [[ -d $1 ]]; then
+if [[ -n $1 ]]; then
   case $1 in
     -i | --install)
       # 安装可执行文件和 .dat 数据文件
@@ -84,7 +84,7 @@ if [[ -d $1 ]]; then
       bash .fhs-install-v2ray/install-dat-release.sh
       ;;
     -r | --remove)
-      移除V2Ray
+      # 移除V2Ray
       bash .fhs-install-v2ray/install-release.sh --remove
       ;;
     -h | --help)
