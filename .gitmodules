@@ -1,0 +1,3 @@
+[submodule "Raspberry-Pi/script/.fhs-install-v2ray"]
+	path = Raspberry-Pi/script/.fhs-install-v2ray
+	url = https://github.com/v2fly/fhs-install-v2ray

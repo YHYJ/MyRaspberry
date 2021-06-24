@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 : << !
-Name: 1-modify_source.sh
+Name: 1-1_modify-source.sh
 Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2021-06-18 10:39:09
@@ -73,7 +73,7 @@ function versionInfo() {
 ####################################################################
 #++++++++++++++++++++++++++++++ Main ++++++++++++++++++++++++++++++#
 ####################################################################
-TEMP=$(getopt --options "d:p:chv" --longoptions "dir:,port:,card,help,version" -n "$name" -- "$@")
+TEMP=$(getopt --options "t:hv" --longoptions "tag:,help,version" -n "$name" -- "$@")
 eval set -- "$TEMP"
 
 case $1 in
