@@ -1,0 +1,11 @@
+[Unit]
+Description=Sunny ngrok
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/sunny clientid <Tunnel-ID>
+
+[Install]
+WantedBy=multi-user.target
