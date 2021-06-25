@@ -1,0 +1,1 @@
+  - [ ] 更新Bootloader和EEPROM：https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md (2021-06-25 09:54)
