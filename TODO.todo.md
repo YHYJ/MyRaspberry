@@ -1,1 +1,2 @@
   - [ ] 更新Bootloader和EEPROM：https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md (2021-06-25 09:54)
+  - [ ] Raspberry Pi Zero安装Arch Linux ARM并连接wifi成功，接下来是使能其USB SSH功能 (2021-07-02 18:03)
