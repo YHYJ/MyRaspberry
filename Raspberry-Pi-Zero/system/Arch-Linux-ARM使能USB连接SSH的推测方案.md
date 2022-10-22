@@ -1,7 +1,7 @@
 # Arch-Linux-ARM使能USB连接SSH的推测方案
 
 <!-- File: Arch-Linux-ARM使能USB连接SSH的推测方案.md -->
-<!-- Auther: YJ -->
+<!-- Author: YJ -->
 <!-- Email: yj1516268@outlook.com -->
 <!-- Created Time: 2021-07-02 16:26:36 -->
 

@@ -1,7 +1,7 @@
 # diff
 
 <!-- File: diff.md -->
-<!-- Auther: YJ -->
+<!-- Author: YJ -->
 <!-- Email: yj1516268@outlook.com -->
 <!-- Created Time: 2021-07-02 16:25:03 -->
 

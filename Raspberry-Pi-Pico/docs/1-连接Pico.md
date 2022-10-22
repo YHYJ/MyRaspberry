@@ -1,7 +1,7 @@
 # 1-连接Pico
 
 <!-- File: 1-连接Pico.md -->
-<!-- Auther: YJ -->
+<!-- Author: YJ -->
 <!-- Email: yj1516268@outlook.com -->
 <!-- Created Time: 2021-06-10 11:36:30 -->
 

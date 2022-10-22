@@ -1,7 +1,7 @@
 # 0-安装MicroPython
 
 <!-- File: 0-安装MicroPython.md -->
-<!-- Auther: YJ -->
+<!-- Author: YJ -->
 <!-- Email: yj1516268@outlook.com -->
 <!-- Created Time: 2021-06-08 16:41:55 -->
 
