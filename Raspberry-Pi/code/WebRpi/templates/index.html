@@ -11,7 +11,10 @@
         <p style = "width: 100%; height: 45px; display: block; line-height: 45px;">
             <span id = "UPS"></span>&nbsp&nbsp&nbsp<button id = "refresh">Refresh</button>
         </p>
+
         <script src = "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.js" charset = "utf-8"></script>
+
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
         <script charset = "utf-8">
             $.ajax({
                 url: "update/ups",
@@ -24,6 +27,7 @@
             })
         </script>
 
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
         <script charset = "utf-8">
             $(function() {
                 $("#refresh").click(function(){
