@@ -9,7 +9,9 @@ Created Time: 2023-03-28 16:41:54
 Description:
 """
 
-from flask import Flask
+import json
+
+from flask import Flask, render_template
 from waitress import serve
 
 from modules.ups import output2web
@@ -18,10 +20,19 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def main():
+def index():
     """Flask Main"""
-    ups = output2web()
-    return ups
+    return render_template('index.html')
+
+
+@app.route('/update/ups', methods=['GTE', 'POST'])
+def test():
+    """Flask Main"""
+    ups = output2web() # UPS数据
+
+    ajax = dict()
+    ajax['ups'] = ups
+    return json.dumps(ajax)
 
 
 if __name__ == '__main__':

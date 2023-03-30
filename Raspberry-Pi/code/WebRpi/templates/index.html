@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible", content = "ie=edge">
+        <title>echarts</title>
+    </head>
+
+    <body>
+        <p style = "width: 100%; height: 45px; display: block; line-height: 45px;">
+            <span id = "UPS"></span>&nbsp&nbsp&nbsp<button id = "refresh">Refresh</button>
+        </p>
+        <script src = "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.js" charset = "utf-8"></script>
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/ups",
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    $("#UPS").html(data.ups);
+                    console.log(data)
+                }
+            })
+        </script>
+
+        <script charset = "utf-8">
+            $(function() {
+                $("#refresh").click(function(){
+                    $.ajax({
+                        url: "update/ups",
+                        type: "POST",
+                        dataType: "json",
+                        success: function (data) {
+                            $("#UPS").html(data.ups);
+                            console.log(data)
+                        }
+                    })
+                })
+            })
+        </script>
+    </body>
+</html>
