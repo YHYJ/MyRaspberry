@@ -6,7 +6,7 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2023-03-28 10:11:54
 
-Description: 树莓派UPS-18650 Lite模块检测程序
+Description: 树莓派UPS-18650 Lite模块监控程序
 
 UPS-18650 Lite v1.0版本中，插入电源时GPIO是高电平
 UPS-18650 Lite v1.1版本中，插入电源时GPIO是低电平
