@@ -6,7 +6,7 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2023-03-28 10:11:54
 
-Description: 树莓派UPS-18650 Lite模块监控程序
+Description: 树莓派UPS-18650 Lite模块监控
 
 UPS-18650 Lite v1.0版本中，插入电源时GPIO是高电平
 UPS-18650 Lite v1.1版本中，插入电源时GPIO是低电平
@@ -48,66 +48,8 @@ def PowerOnReset(bus):
     bus.write_word_data(address, 0xfe, 0x0054)
 
 
-def output2stdout():
-    """本地输出"""
-    gpio.setmode(gpio.BCM)
-    gpio.setwarnings(False)
-    gpio.setup(4, gpio.IN)
-
-    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
-    bus = smbus.SMBus(1)
-
-    print('Initialize the MAX17040 ......')
-
-    if (gpio.input(4) == gpio.HIGH):
-        PowerOnReset(bus)
-
-    while True:
-        now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        voltage = read_voltage(bus)
-        capacity = read_capacity(bus)
-
-        if capacity >= 100 and gpio.input(4) == gpio.LOW:
-            print('\r\033[?25l{} {} Battery: {:.2f}V | {:.2f}% | {}\033[0m'.
-                  format(now, '🔌', voltage, capacity, 'Battery Full'),
-                  end='',
-                  flush=True)
-        elif capacity >= 100 and gpio.input(4) == gpio.HIGH:
-            print('\r\033[?25l{} {} Battery: {:.2f}V | {:.2f}% | {}\033[0m'.
-                  format(now, '🔋', voltage, capacity, 'Battery Full'),
-                  end='',
-                  flush=True)
-        elif 10 < capacity < 100 and gpio.input(4) == gpio.LOW:
-            print('\r\033[?25l{} {} Battery: {:.2f}V | {:.2f}% | {}\033[0m'.
-                  format(now, '🔌', voltage, capacity, 'Battery Charging'),
-                  end='',
-                  flush=True)
-        elif 10 < capacity < 100 and gpio.input(4) == gpio.HIGH:
-            print('\r\033[?25l{} {} Battery: {:.2f}V | {:.2f}% | {}\033[0m'.
-                  format(now, '🔋', voltage, capacity, 'Battery Discharging'),
-                  end='',
-                  flush=True)
-        elif 0 < capacity <= 10 and gpio.input(4) == gpio.LOW:
-            print('\r\033[?25l{} {} Battery: {:.2f}V | {:.2f}% | {}\033[0m'.
-                  format(now, '🔌', voltage, capacity, 'Battery Low'),
-                  end='',
-                  flush=True)
-        elif 0 < capacity <= 10 and gpio.input(4) == gpio.HIGH:
-            print('\r\033[?25l{} {} Battery: {:.2f}V | {:.2f}% | {}\033[0m'.
-                  format(now, '🔋', voltage, capacity, 'Battery Low'),
-                  end='',
-                  flush=True)
-        else:
-            print(
-                '\r\033[?25l{} Battery: {:.2f}V | {:.2f}% | {}\033[0m'.format(
-                    now, voltage, capacity, 'Battery Unknown'),
-                end='',
-                flush=True)
-        time.sleep(2)
-
-
-def output2web():
-    """输出到Web"""
+def get_ups_info():
+    """获取UPS信息"""
     gpio.setmode(gpio.BCM)
     gpio.setwarnings(False)
     gpio.setup(4, gpio.IN)
@@ -119,32 +61,34 @@ def output2web():
     voltage = read_voltage(bus)
     capacity = read_capacity(bus)
 
-    if capacity >= 100 and gpio.input(4) == gpio.LOW:
-        info = '{} {} {}: {:.2f}V | {:.2f}%'.format(now, '🔌', 'Battery Full',
-                                                    voltage, capacity)
-    elif capacity >= 100 and gpio.input(4) == gpio.HIGH:
-        info = '{} {} {}: {:.2f}V | {:.2f}%'.format(now, '🔋', 'Battery Full',
-                                                    voltage, capacity)
-    elif 10 < capacity < 100 and gpio.input(4) == gpio.LOW:
-        info = '{} {} {}: {:.2f}V | {:.2f}%'.format(now, '🔌',
-                                                    'Battery Charging',
-                                                    voltage, capacity)
-    elif 10 < capacity < 100 and gpio.input(4) == gpio.HIGH:
-        info = '{} {} {}: {:.2f}V | {:.2f}%'.format(now, '🔋',
-                                                    'Battery Discharging',
-                                                    voltage, capacity)
-    elif 0 < capacity <= 10 and gpio.input(4) == gpio.LOW:
-        info = '{} {} {}: {:.2f}V | {:.2f}%'.format(now, '🔌', 'Battery Low',
-                                                    voltage, capacity)
-    elif 0 < capacity <= 10 and gpio.input(4) == gpio.HIGH:
-        info = '{} {} {}: {:.2f}V | {:.2f}%'.format(now, '🔋', 'Battery Low',
-                                                    voltage, capacity)
+    if gpio.input(4) == gpio.LOW:
+        tag = '🔌'
+    elif gpio.input(4) == gpio.HIGH:
+        tag = '🔋'
     else:
-        info = '{} {}: {:.2f}V | {:.2f}% | {}'.format(now, 'Battery Unknown',
-                                                      voltage, capacity)
+        tag = ''
 
-    return info
+    if capacity >= 100:
+        status = 'Battery Full'
+    elif 10 < capacity < 100:
+        status = 'Battery Charging'
+    elif 0 < capacity <= 10:
+        status = 'Battery Low'
+    else:
+        status = 'Battery Unknown'
+
+    digit = 1  # 结果精确度（保留多少位小数)
+
+    ups_info = dict()
+    ups_info['time'] = now
+    ups_info['tag'] = tag
+    ups_info['status'] = status
+    ups_info['voltage'] = round(voltage, digit)
+    ups_info['capacity'] = round(capacity, digit)
+
+    return ups_info
 
 
 if __name__ == '__main__':
-    output2stdout()
+    ups_info = get_ups_info()
+    print(ups_info)

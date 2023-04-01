@@ -8,40 +8,285 @@
     </head>
 
     <body>
-        <p style = "width: 100%; height: 45px; display: block; line-height: 45px;">
-            <span id = "UPS"></span>&nbsp&nbsp&nbsp<button id = "refresh">Refresh</button>
-        </p>
-
         <script src = "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.js" charset = "utf-8"></script>
 
+        <!-- [> [> [> [> [> [> UPS信息 <] <] <] <] <] <] -->
+        <p style = "width: 100%; display: block;">
+            <span id = "UPS_Time"></span>
+            <span id = "UPS_Status"></span>
+            <span id = "UPS_Tag"></span>
+            <span id = "UPS_Voltage"></span>V |
+            <span id = "UPS_Capacity"></span>%
+            &nbsp&nbsp&nbsp<button id = "ups_refresh">Refresh</button>
+        </p>
         <!-- 确保不用点击"Refresh"按钮即可显示 -->
         <script charset = "utf-8">
             $.ajax({
                 url: "update/ups",
-                type: "POST",
+                type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $("#UPS").html(data.ups);
-                    console.log(data)
+                    $("#UPS_Time").html(data.ups.time);
+                    $("#UPS_Status").html(data.ups.status);
+                    $("#UPS_Tag").html(data.ups.tag);
+                    $("#UPS_Voltage").html(data.ups.voltage);
+                    $("#UPS_Capacity").html(data.ups.capacity);
+                    console.log(data);
                 }
             })
         </script>
-
         <!-- 确保点击"Refresh"按钮即可刷新 -->
         <script charset = "utf-8">
             $(function() {
-                $("#refresh").click(function(){
+                $("#ups_refresh").click(function(){
                     $.ajax({
                         url: "update/ups",
-                        type: "POST",
+                        type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            $("#UPS").html(data.ups);
-                            console.log(data)
+                            $("#UPS_Time").html(data.ups.time);
+                            $("#UPS_Status").html(data.ups.status);
+                            $("#UPS_Tag").html(data.ups.tag);
+                            $("#UPS_Voltage").html(data.ups.voltage);
+                            $("#UPS_Capacity").html(data.ups.capacity);
+                            console.log(data);
                         }
                     })
                 })
             })
         </script>
+
+        <!-- [> [> [> [> [> [> CPU信息 <] <] <] <] <] <] -->
+        <p style = "width: 100%; display: block;">
+            CPU利用率: <span id = "CPU_Percent"></span>% |
+            CPU负载: <span id = "CPU_Load_1"></span>, <span id = "CPU_Load_5"></span>, <span id = "CPU_Load_10"></span> |
+            <span id = "CPU_Core"></span>核<span id = "CPU_Thread"></span>线程
+            &nbsp&nbsp&nbsp<button id = "cpu_refresh">Refresh</button>
+        </p>
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/cpu",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $("#CPU_Percent").html(data.cpu.percent);
+                    $("#CPU_Load_1").html(data.cpu.load_1);
+                    $("#CPU_Load_5").html(data.cpu.load_5);
+                    $("#CPU_Load_10").html(data.cpu.load_10);
+                    $("#CPU_Core").html(data.cpu.core);
+                    $("#CPU_Thread").html(data.cpu.thread);
+                    console.log(data);
+                }
+            })
+        </script>
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
+        <script charset = "utf-8">
+            $(function() {
+                $("#cpu_refresh").click(function(){
+                    $.ajax({
+                        url: "update/cpu",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $("#CPU_Percent").html(data.cpu.percent);
+                            $("#CPU_Load_1").html(data.cpu.load_1);
+                            $("#CPU_Load_5").html(data.cpu.load_5);
+                            $("#CPU_Load_10").html(data.cpu.load_10);
+                            $("#CPU_Core").html(data.cpu.core);
+                            $("#CPU_Thread").html(data.cpu.thread);
+                            console.log(data);
+                        }
+                    })
+                })
+            })
+        </script>
+
+        <!-- [> [> [> [> [> [> 内存信息 <] <] <] <] <] <] -->
+        <p style = "width: 100%; display: block;">
+            总物理内存: <span id = "MEM_Total"></span>MiB |
+            已用百分比: <span id = "MEM_Percent"></span>% |
+            已用: <span id = "MEM_Used"></span>MiB |
+            可用: <span id = "MEM_Available"></span>MiB
+            &nbsp&nbsp&nbsp<button id = "mem_refresh">Refresh</button>
+        </p>
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/mem",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $("#MEM_Total").html(data.mem.total);
+                    $("#MEM_Percent").html(data.mem.percent);
+                    $("#MEM_Used").html(data.mem.used);
+                    $("#MEM_Available").html(data.mem.available);
+                    console.log(data);
+                }
+            })
+        </script>
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
+        <script charset = "utf-8">
+            $(function() {
+                $("#mem_refresh").click(function(){
+                    $.ajax({
+                        url: "update/mem",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $("#MEM_Total").html(data.mem.total);
+                            $("#MEM_Percent").html(data.mem.percent);
+                            $("#MEM_Used").html(data.mem.used);
+                            $("#MEM_Available").html(data.mem.available);
+                            console.log(data);
+                        }
+                    })
+                })
+            })
+        </script>
+
+        <!-- [> [> [> [> [> [> 交换分区信息 <] <] <] <] <] <] -->
+        <p style = "width: 100%; display: block;">
+            总交换分区: <span id = "SWAP_Total"></span>MiB |
+            已用百分比: <span id = "SWAP_Percent"></span>% |
+            已用: <span id = "SWAP_Used"></span>MiB |
+            可用: <span id = "SWAP_Free"></span>MiB
+            &nbsp&nbsp&nbsp<button id = "swap_refresh">Refresh</button>
+        </p>
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/swap",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $("#SWAP_Total").html(data.swap.total);
+                    $("#SWAP_Percent").html(data.swap.percent);
+                    $("#SWAP_Used").html(data.swap.used);
+                    $("#SWAP_Free").html(data.swap.free);
+                    console.log(data);
+                }
+            })
+        </script>
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
+        <script charset = "utf-8">
+            $(function() {
+                $("#swap_refresh").click(function(){
+                    $.ajax({
+                        url: "update/swap",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $("#SWAP_Total").html(data.swap.total);
+                            $("#SWAP_Percent").html(data.swap.percent);
+                            $("#SWAP_Used").html(data.swap.used);
+                            $("#SWAP_Free").html(data.swap.free);
+                            console.log(data);
+                        }
+                    })
+                })
+            })
+        </script>
+
+        <!-- [> [> [> [> [> [> 磁盘信息 <] <] <] <] <] <] -->
+        <p style = "width: 100%; display: block;">
+            磁盘大小: <span id = "DISK_Total"></span>GiB |
+            已用百分比: <span id = "DISK_Percent"></span>% |
+            已用: <span id = "DISK_Used"></span>GiB |
+            可用: <span id = "DISK_Free"></span>GiB
+            &nbsp&nbsp&nbsp<button id = "disk_refresh">Refresh</button>
+        </p>
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/disk",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $("#DISK_Total").html(data.disk.total);
+                    $("#DISK_Percent").html(data.disk.percent);
+                    $("#DISK_Used").html(data.disk.used);
+                    $("#DISK_Free").html(data.disk.free);
+                    console.log(data);
+                }
+            })
+        </script>
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
+        <script charset = "utf-8">
+            $(function() {
+                $("#disk_refresh").click(function(){
+                    $.ajax({
+                        url: "update/disk",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $("#DISK_Total").html(data.disk.total);
+                            $("#DISK_Percent").html(data.disk.percent);
+                            $("#DISK_Used").html(data.disk.used);
+                            $("#DISK_Free").html(data.disk.free);
+                            console.log(data);
+                        }
+                    })
+                })
+            })
+        </script>
+
+        <!-- [> [> [> [> [> [> 网卡信息 <] <] <] <] <] <] -->
+        <!-- <p style = "width: 100%; display: block;"> 网卡监控: -->
+        <p style = "width: 100%; display: block;">网卡监控:&nbsp&nbsp&nbsp<button id = "net_refresh">Refresh</button></p>
+        <p id = "NET"></p>
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/net",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    var nets=data.net;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < nets.length; i++) {
+                        ul.append("<li>"+nets[i].name+"</li>");
+                        ul.append("IPv4: <span>"+nets[i].ip_v4+"</span><br>");
+                        ul.append("子网掩码(v4): <span>"+nets[i].netmask_v4+"</span><br>");
+                        ul.append("网关(v4): <span>"+nets[i].broadcast_v4+"</span><br>");
+                        ul.append("IPv6: <span>"+nets[i].ip_v6+"</span><br>");
+                        ul.append("子网掩码(v6): <span>"+nets[i].netmask_v6+"</span><br>");
+                        ul.append("网关(v6): <span>"+nets[i].broadcast_v6+"</span><br>");
+                        ul.append("MAC地址: <span>"+nets[i].mac+"</span>");
+                    }
+                    $("#NET").html(ul);
+                    console.log(data);
+                }
+            })
+        </script>
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
+        <script charset = "utf-8">
+            $(function() {
+                $("#net_refresh").click(function(){
+                    $.ajax({
+                        url: "update/net",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            var nets=data.net;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < nets.length; i++) {
+                                ul.append("<li>"+nets[i].name+"</li>");
+                                ul.append("IPv4: <span>"+nets[i].ip_v4+"</span><br>");
+                                ul.append("子网掩码(v4): <span>"+nets[i].netmask_v4+"</span><br>");
+                                ul.append("网关(v4): <span>"+nets[i].broadcast_v4+"</span><br>");
+                                ul.append("IPv6: <span>"+nets[i].ip_v6+"</span><br>");
+                                ul.append("子网掩码(v6): <span>"+nets[i].netmask_v6+"</span><br>");
+                                ul.append("网关(v6): <span>"+nets[i].broadcast_v6+"</span><br>");
+                                ul.append("MAC地址: <span>"+nets[i].mac+"</span>");
+                            }
+                            $("#NET").html(ul);
+                            console.log(data);
+                        }
+                    })
+                })
+            })
+        </script>
+
     </body>
 </html>
