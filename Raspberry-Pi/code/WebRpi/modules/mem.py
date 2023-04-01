@@ -20,18 +20,21 @@ def get_mem_info():
     muse = 1024**factor
     digit = 0  # 结果精确度（保留多少位小数）
 
-    mem_info = dict()
-    mem_info['total'] = round(vmeminfo[0] / muse, digit)
-    mem_info['available'] = round(vmeminfo[1] / muse, digit)
-    mem_info['percent'] = round(vmeminfo[2], digit)
-    mem_info['used'] = round(vmeminfo[3] / muse, digit)
-    mem_info['free'] = round(vmeminfo[4] / muse, digit)
-    mem_info['active'] = round(vmeminfo[5] / muse, digit)
-    mem_info['inactive'] = round(vmeminfo[6] / muse, digit)
-    mem_info['buffers'] = round(vmeminfo[7] / muse, digit)
-    mem_info['cached'] = round(vmeminfo[8] / muse, digit)
-    mem_info['shared'] = round(vmeminfo[9] / muse, digit)
-    mem_info['slab'] = round(vmeminfo[10] / muse, digit)
+    mem_data = dict()
+    mem_data['total'] = round(vmeminfo[0] / muse, digit)
+    mem_data['available'] = round(vmeminfo[1] / muse, digit)
+    mem_data['percent'] = round(vmeminfo[2], digit)
+    mem_data['used'] = round(vmeminfo[3] / muse, digit)
+    mem_data['free'] = round(vmeminfo[4] / muse, digit)
+    mem_data['active'] = round(vmeminfo[5] / muse, digit)
+    mem_data['inactive'] = round(vmeminfo[6] / muse, digit)
+    mem_data['buffers'] = round(vmeminfo[7] / muse, digit)
+    mem_data['cached'] = round(vmeminfo[8] / muse, digit)
+    mem_data['shared'] = round(vmeminfo[9] / muse, digit)
+    mem_data['slab'] = round(vmeminfo[10] / muse, digit)
+
+    mem_info = list()
+    mem_info.append(mem_data)
 
     return mem_info
 

@@ -21,13 +21,16 @@ def get_cpu_info():
     cpu_thread_count = psutil.cpu_count(logical=True)  # CPU线程数
     cpu_load_1, cpu_load_5, cpu_load_10 = psutil.getloadavg() # CPU负载（1分钟、5分钟、10分钟）
 
-    cpu_info = dict()
-    cpu_info['percent'] = cpu_percent
-    cpu_info['load_1'] = cpu_load_1
-    cpu_info['load_5'] = cpu_load_5
-    cpu_info['load_10'] = cpu_load_10
-    cpu_info['core'] = cpu_core_count
-    cpu_info['thread'] = cpu_thread_count
+    cpu_data = dict()
+    cpu_data['percent'] = cpu_percent
+    cpu_data['load_1'] = cpu_load_1
+    cpu_data['load_5'] = cpu_load_5
+    cpu_data['load_10'] = cpu_load_10
+    cpu_data['core'] = cpu_core_count
+    cpu_data['thread'] = cpu_thread_count
+
+    cpu_info = list()
+    cpu_info.append(cpu_data)
 
     return cpu_info
 

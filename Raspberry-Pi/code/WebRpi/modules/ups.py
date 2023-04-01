@@ -62,9 +62,9 @@ def get_ups_info():
     capacity = read_capacity(bus)
 
     if gpio.input(4) == gpio.LOW:
-        tag = '🔌'
+        tag = '充电中🔌'
     elif gpio.input(4) == gpio.HIGH:
-        tag = '🔋'
+        tag = '未充电🔋'
     else:
         tag = ''
 
@@ -79,12 +79,15 @@ def get_ups_info():
 
     digit = 1  # 结果精确度（保留多少位小数)
 
-    ups_info = dict()
-    ups_info['time'] = now
-    ups_info['tag'] = tag
-    ups_info['status'] = status
-    ups_info['voltage'] = round(voltage, digit)
-    ups_info['capacity'] = round(capacity, digit)
+    ups_data = dict()
+    ups_data['time'] = now
+    ups_data['tag'] = tag
+    ups_data['status'] = status
+    ups_data['voltage'] = round(voltage, digit)
+    ups_data['capacity'] = round(capacity, digit)
+
+    ups_info = list()
+    ups_info.append(ups_data)
 
     return ups_info
 

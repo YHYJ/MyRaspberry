@@ -20,13 +20,16 @@ def get_swap_info():
     muse = 1024**factor
     digit = 0  # 结果精确度（保留多少位小数）
 
-    swap_info = dict()
-    swap_info['total'] = round(smeminfo[0] / muse, digit)
-    swap_info['used'] = round(smeminfo[1] / muse, digit)
-    swap_info['free'] = round(smeminfo[2] / muse, digit)
-    swap_info['percent'] = round(smeminfo[3], digit)
-    swap_info['sin'] = round(smeminfo[4] / muse, digit)
-    swap_info['sout'] = round(smeminfo[5] / muse, digit)
+    swap_data = dict()
+    swap_data['total'] = round(smeminfo[0] / muse, digit)
+    swap_data['used'] = round(smeminfo[1] / muse, digit)
+    swap_data['free'] = round(smeminfo[2] / muse, digit)
+    swap_data['percent'] = round(smeminfo[3], digit)
+    swap_data['sin'] = round(smeminfo[4] / muse, digit)
+    swap_data['sout'] = round(smeminfo[5] / muse, digit)
+
+    swap_info = list()
+    swap_info.append(swap_data)
 
     return swap_info
 

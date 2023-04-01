@@ -21,12 +21,15 @@ def get_disk_info():
     muse = 1024**factor
     digit = 1  # 结果精确度（保留多少位小数）
 
-    disk_info = dict()
-    disk_info['path'] = disk_path
-    disk_info['total'] = round(diskinfo[0] / muse, digit)
-    disk_info['used'] = round(diskinfo[1] / muse, digit)
-    disk_info['free'] = round(diskinfo[2] / muse, digit)
-    disk_info['percent'] = round(diskinfo[3], digit)
+    disk_root = dict()
+    disk_root['path'] = disk_path
+    disk_root['total'] = round(diskinfo[0] / muse, digit)
+    disk_root['used'] = round(diskinfo[1] / muse, digit)
+    disk_root['free'] = round(diskinfo[2] / muse, digit)
+    disk_root['percent'] = round(diskinfo[3], digit)
+
+    disk_info = list()
+    disk_info.append(disk_root)
 
     return disk_info
 

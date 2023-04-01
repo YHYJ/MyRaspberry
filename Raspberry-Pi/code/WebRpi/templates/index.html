@@ -12,17 +12,13 @@
 
         <!-- [> [> [> [> [> [> UPS信息 <] <] <] <] <] <] -->
         <p style = "width: 100%; display: block;">UPS监控:&nbsp&nbsp&nbsp<button id = "ViewUps"></button>&nbsp&nbsp&nbsp<button id = "RefreshUPS">Refresh</button></p>
-        <div id = "UpsInfo" style = "display: none;">
-            <span id = "UPS_Time"></span>
-            <span id = "UPS_Status"></span>
-            <span id = "UPS_Tag"></span>
-            <span id = "UPS_Voltage"></span>V |
-            <span id = "UPS_Capacity"></span>%
+        <div id = "UpsInfo" style = "display: block;">
+            <p id = "UPS"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
         <script charset = "utf-8">
             $(function(){
-                $("#ViewUps").html("View")
+                $("#ViewUps").html("Hide")
                 $("#ViewUps").click(function(){
                     let attr = document.getElementById('UpsInfo')
                     if(attr.style.display == 'block'){
@@ -42,11 +38,16 @@
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $("#UPS_Time").html(data.ups.time);
-                    $("#UPS_Status").html(data.ups.status);
-                    $("#UPS_Tag").html(data.ups.tag);
-                    $("#UPS_Voltage").html(data.ups.voltage);
-                    $("#UPS_Capacity").html(data.ups.capacity);
+                    var ups=data.ups;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < ups.length; i++) {
+                        ul.append("电池电量: <span>"+ups[i].capacity+"</span>%<br>");
+                        ul.append("电池电压: <span>"+ups[i].voltage+"</span>V<br>");
+                        ul.append("电池状态: <span>"+ups[i].status+"</span><br>");
+                        ul.append("是否充电: <span>"+ups[i].tag+"</span><br>");
+                        ul.append("系统时间: <span>"+ups[i].time+"</span><br>");
+                    }
+                    $("#UPS").html(ul);
                     console.log(data);
                 }
             })
@@ -60,11 +61,16 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            $("#UPS_Time").html(data.ups.time);
-                            $("#UPS_Status").html(data.ups.status);
-                            $("#UPS_Tag").html(data.ups.tag);
-                            $("#UPS_Voltage").html(data.ups.voltage);
-                            $("#UPS_Capacity").html(data.ups.capacity);
+                            var ups=data.ups;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < ups.length; i++) {
+                                ul.append("电池电量: <span>"+ups[i].capacity+"</span>%<br>");
+                                ul.append("电池电压: <span>"+ups[i].voltage+"</span>V<br>");
+                                ul.append("电池状态: <span>"+ups[i].status+"</span><br>");
+                                ul.append("是否充电: <span>"+ups[i].tag+"</span><br>");
+                                ul.append("系统时间: <span>"+ups[i].time+"</span><br>");
+                            }
+                            $("#UPS").html(ul);
                             console.log(data);
                         }
                     })
@@ -75,9 +81,7 @@
         <!-- [> [> [> [> [> [> CPU信息 <] <] <] <] <] <] -->
         <p style = "width: 100%; display: block;">CPU监控:&nbsp&nbsp&nbsp<button id = "ViewCpu"></button>&nbsp&nbsp&nbsp<button id = "RefreshCPU">Refresh</button></p>
         <div id = "CpuInfo" style = "display: none;">
-            CPU利用率: <span id = "CPU_Percent"></span>% |
-            CPU负载: <span id = "CPU_Load_1"></span>, <span id = "CPU_Load_5"></span>, <span id = "CPU_Load_10"></span> |
-            <span id = "CPU_Core"></span>核<span id = "CPU_Thread"></span>线程
+            <p id = "CPU"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
         <script charset = "utf-8">
@@ -102,12 +106,14 @@
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $("#CPU_Percent").html(data.cpu.percent);
-                    $("#CPU_Load_1").html(data.cpu.load_1);
-                    $("#CPU_Load_5").html(data.cpu.load_5);
-                    $("#CPU_Load_10").html(data.cpu.load_10);
-                    $("#CPU_Core").html(data.cpu.core);
-                    $("#CPU_Thread").html(data.cpu.thread);
+                    var cpu=data.cpu;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < cpu.length; i++) {
+                        ul.append("CPU配置: <span>"+cpu[i].core+"</span>核<span>"+cpu[i].thread+"</span>线程<br>");
+                        ul.append("CPU利用率: <span>"+cpu[i].percent+"</span>%<br>");
+                        ul.append("CPU负载: <span>"+cpu[i].load_1+"</span>, <span>"+cpu[i].load_5+"</span>, <span>"+cpu[i].load_10+"</span><br>");
+                    }
+                    $("#CPU").html(ul);
                     console.log(data);
                 }
             })
@@ -121,12 +127,14 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            $("#CPU_Percent").html(data.cpu.percent);
-                            $("#CPU_Load_1").html(data.cpu.load_1);
-                            $("#CPU_Load_5").html(data.cpu.load_5);
-                            $("#CPU_Load_10").html(data.cpu.load_10);
-                            $("#CPU_Core").html(data.cpu.core);
-                            $("#CPU_Thread").html(data.cpu.thread);
+                            var cpu=data.cpu;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < cpu.length; i++) {
+                                ul.append("CPU配置: <span>"+cpu[i].core+"</span>核<span>"+cpu[i].thread+"</span>线程<br>");
+                                ul.append("CPU利用率: <span>"+cpu[i].percent+"</span>%<br>");
+                                ul.append("CPU负载: <span>"+cpu[i].load_1+"</span>, <span>"+cpu[i].load_5+"</span>, <span>"+cpu[i].load_10+"</span><br>");
+                            }
+                            $("#CPU").html(ul);
                             console.log(data);
                         }
                     })
@@ -137,10 +145,7 @@
         <!-- [> [> [> [> [> [> 内存信息 <] <] <] <] <] <] -->
         <p style = "width: 100%; display: block;">内存监控:&nbsp&nbsp&nbsp<button id = "ViewMem"></button>&nbsp&nbsp&nbsp<button id = "RefreshMEM">Refresh</button></p>
         <div id = "MemInfo" style = "display: none;">
-            总物理内存: <span id = "MEM_Total"></span>MiB |
-            已用百分比: <span id = "MEM_Percent"></span>% |
-            已用: <span id = "MEM_Used"></span>MiB |
-            可用: <span id = "MEM_Available"></span>MiB
+            <p id = "MEM"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
         <script charset = "utf-8">
@@ -165,10 +170,15 @@
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $("#MEM_Total").html(data.mem.total);
-                    $("#MEM_Percent").html(data.mem.percent);
-                    $("#MEM_Used").html(data.mem.used);
-                    $("#MEM_Available").html(data.mem.available);
+                    var mem=data.mem;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < mem.length; i++) {
+                        ul.append("总交换分区: <span>"+mem[i].total+"</span>MiB<br>");
+                        ul.append("已用百分比: <span>"+mem[i].percent+"</span>%<br>");
+                        ul.append("已用: <span>"+mem[i].used+"</span>MiB<br>");
+                        ul.append("可用: <span>"+mem[i].available+"</span>MiB<br>");
+                    }
+                    $("#MEM").html(ul);
                     console.log(data);
                 }
             })
@@ -182,10 +192,15 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            $("#MEM_Total").html(data.mem.total);
-                            $("#MEM_Percent").html(data.mem.percent);
-                            $("#MEM_Used").html(data.mem.used);
-                            $("#MEM_Available").html(data.mem.available);
+                            var mem=data.mem;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < mem.length; i++) {
+                                ul.append("总交换分区: <span>"+mem[i].total+"</span>MiB<br>");
+                                ul.append("已用百分比: <span>"+mem[i].percent+"</span>%<br>");
+                                ul.append("已用: <span>"+mem[i].used+"</span>MiB<br>");
+                                ul.append("可用: <span>"+mem[i].available+"</span>MiB<br>");
+                            }
+                            $("#MEM").html(ul);
                             console.log(data);
                         }
                     })
@@ -196,10 +211,7 @@
         <!-- [> [> [> [> [> [> 交换分区信息 <] <] <] <] <] <] -->
         <p style = "width: 100%; display: block;">Swap监控:&nbsp&nbsp&nbsp<button id = "ViewSwap"></button>&nbsp&nbsp&nbsp<button id = "RefreshSWAP">Refresh</button></p>
         <div id = "SwapInfo" style = "display: none;">
-            总交换分区: <span id = "SWAP_Total"></span>MiB |
-            已用百分比: <span id = "SWAP_Percent"></span>% |
-            已用: <span id = "SWAP_Used"></span>MiB |
-            可用: <span id = "SWAP_Free"></span>MiB
+            <p id = "SWAP"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
         <script charset = "utf-8">
@@ -224,10 +236,15 @@
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $("#SWAP_Total").html(data.swap.total);
-                    $("#SWAP_Percent").html(data.swap.percent);
-                    $("#SWAP_Used").html(data.swap.used);
-                    $("#SWAP_Free").html(data.swap.free);
+                    var swap=data.swap;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < swap.length; i++) {
+                        ul.append("总交换分区: <span>"+swap[i].total+"</span>MiB<br>");
+                        ul.append("已用百分比: <span>"+swap[i].percent+"</span>%<br>");
+                        ul.append("已用: <span>"+swap[i].used+"</span>MiB<br>");
+                        ul.append("可用: <span>"+swap[i].free+"</span>MiB<br>");
+                    }
+                    $("#SWAP").html(ul);
                     console.log(data);
                 }
             })
@@ -241,10 +258,15 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            $("#SWAP_Total").html(data.swap.total);
-                            $("#SWAP_Percent").html(data.swap.percent);
-                            $("#SWAP_Used").html(data.swap.used);
-                            $("#SWAP_Free").html(data.swap.free);
+                            var swap=data.swap;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < swap.length; i++) {
+                                ul.append("总交换分区: <span>"+swap[i].total+"</span>MiB<br>");
+                                ul.append("已用百分比: <span>"+swap[i].percent+"</span>%<br>");
+                                ul.append("已用: <span>"+swap[i].used+"</span>MiB<br>");
+                                ul.append("可用: <span>"+swap[i].free+"</span>MiB<br>");
+                            }
+                            $("#SWAP").html(ul);
                             console.log(data);
                         }
                     })
@@ -255,11 +277,7 @@
         <!-- [> [> [> [> [> [> 磁盘信息 <] <] <] <] <] <] -->
         <p style = "width: 100%; display: block;">磁盘监控:&nbsp&nbsp&nbsp<button id = "ViewDisk"></button>&nbsp&nbsp&nbsp<button id = "RefreshDISK">Refresh</button></p>
         <div id = "DiskInfo" style = "display: none;">
-            挂载点: <span id = "DISK_Path"></span> |
-            磁盘大小: <span id = "DISK_Total"></span>GiB |
-            已用百分比: <span id = "DISK_Percent"></span>% |
-            已用: <span id = "DISK_Used"></span>GiB |
-            可用: <span id = "DISK_Free"></span>GiB
+            <p id = "DISK"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
         <script charset = "utf-8">
@@ -284,11 +302,16 @@
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    $("#DISK_Path").html(data.disk.path);
-                    $("#DISK_Total").html(data.disk.total);
-                    $("#DISK_Percent").html(data.disk.percent);
-                    $("#DISK_Used").html(data.disk.used);
-                    $("#DISK_Free").html(data.disk.free);
+                    var disk=data.disk;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < disk.length; i++) {
+                        ul.append("<li>"+disk[i].path+"</li>");
+                        ul.append("总大小: <span>"+disk[i].total+"</span>GiB<br>");
+                        ul.append("已用百分比: <span>"+disk[i].percent+"</span>%<br>");
+                        ul.append("已用: <span>"+disk[i].used+"</span>GiB<br>");
+                        ul.append("可用: <span>"+disk[i].free+"</span>GiB<br>");
+                    }
+                    $("#DISK").html(ul);
                     console.log(data);
                 }
             })
@@ -302,11 +325,16 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            $("#DISK_Path").html(data.disk.path);
-                            $("#DISK_Total").html(data.disk.total);
-                            $("#DISK_Percent").html(data.disk.percent);
-                            $("#DISK_Used").html(data.disk.used);
-                            $("#DISK_Free").html(data.disk.free);
+                            var disk=data.disk;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < disk.length; i++) {
+                                ul.append("<li>"+disk[i].path+"</li>");
+                                ul.append("总大小: <span>"+disk[i].total+"</span>GiB<br>");
+                                ul.append("已用百分比: <span>"+disk[i].percent+"</span>%<br>");
+                                ul.append("已用: <span>"+disk[i].used+"</span>GiB<br>");
+                                ul.append("可用: <span>"+disk[i].free+"</span>GiB<br>");
+                            }
+                            $("#DISK").html(ul);
                             console.log(data);
                         }
                     })
@@ -342,17 +370,17 @@
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
-                    var nets=data.net;
+                    var net=data.net;
                     var ul=$("<ul></ul>");
-                    for (var i = 0; i < nets.length; i++) {
-                        ul.append("<li>"+nets[i].name+"</li>");
-                        ul.append("IPv4: <span>"+nets[i].ip_v4+"</span><br>");
-                        ul.append("子网掩码(v4): <span>"+nets[i].netmask_v4+"</span><br>");
-                        ul.append("网关(v4): <span>"+nets[i].broadcast_v4+"</span><br>");
-                        ul.append("IPv6: <span>"+nets[i].ip_v6+"</span><br>");
-                        ul.append("子网掩码(v6): <span>"+nets[i].netmask_v6+"</span><br>");
-                        ul.append("网关(v6): <span>"+nets[i].broadcast_v6+"</span><br>");
-                        ul.append("MAC地址: <span>"+nets[i].mac+"</span>");
+                    for (var i = 0; i < net.length; i++) {
+                        ul.append("<li>"+net[i].name+"</li>");
+                        ul.append("IPv4: <span>"+net[i].ip_v4+"</span><br>");
+                        ul.append("子网掩码(v4): <span>"+net[i].netmask_v4+"</span><br>");
+                        ul.append("网关(v4): <span>"+net[i].broadcast_v4+"</span><br>");
+                        ul.append("IPv6: <span>"+net[i].ip_v6+"</span><br>");
+                        ul.append("子网掩码(v6): <span>"+net[i].netmask_v6+"</span><br>");
+                        ul.append("网关(v6): <span>"+net[i].broadcast_v6+"</span><br>");
+                        ul.append("MAC地址: <span>"+net[i].mac+"</span>");
                     }
                     $("#NET").html(ul);
                     console.log(data);
@@ -368,17 +396,17 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
-                            var nets=data.net;
+                            var net=data.net;
                             var ul=$("<ul></ul>");
-                            for (var i = 0; i < nets.length; i++) {
-                                ul.append("<li>"+nets[i].name+"</li>");
-                                ul.append("IPv4: <span>"+nets[i].ip_v4+"</span><br>");
-                                ul.append("子网掩码(v4): <span>"+nets[i].netmask_v4+"</span><br>");
-                                ul.append("网关(v4): <span>"+nets[i].broadcast_v4+"</span><br>");
-                                ul.append("IPv6: <span>"+nets[i].ip_v6+"</span><br>");
-                                ul.append("子网掩码(v6): <span>"+nets[i].netmask_v6+"</span><br>");
-                                ul.append("网关(v6): <span>"+nets[i].broadcast_v6+"</span><br>");
-                                ul.append("MAC地址: <span>"+nets[i].mac+"</span>");
+                            for (var i = 0; i < net.length; i++) {
+                                ul.append("<li>"+net[i].name+"</li>");
+                                ul.append("IPv4: <span>"+net[i].ip_v4+"</span><br>");
+                                ul.append("子网掩码(v4): <span>"+net[i].netmask_v4+"</span><br>");
+                                ul.append("网关(v4): <span>"+net[i].broadcast_v4+"</span><br>");
+                                ul.append("IPv6: <span>"+net[i].ip_v6+"</span><br>");
+                                ul.append("子网掩码(v6): <span>"+net[i].netmask_v6+"</span><br>");
+                                ul.append("网关(v6): <span>"+net[i].broadcast_v6+"</span><br>");
+                                ul.append("MAC地址: <span>"+net[i].mac+"</span><br>");
                             }
                             $("#NET").html(ul);
                             console.log(data);
