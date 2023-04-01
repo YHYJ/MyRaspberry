@@ -18,24 +18,39 @@ def get_net_info():
 
     net_info = list()
     for name, datas in netinfo.items():
-        cache = dict()
+        personal = {
+            'ip_v4': str(),
+            'netmask_v4': str(),
+            'broadcast_v4': str(),
+            'ip_v6': str(),
+            'netmask_v6': str(),
+            'broadcast_v6': str(),
+            'mac': str()
+        }
         for data in datas:
-            cache.update({'name': name})
+            personal.update({'name': name})
             if data.family.name == 'AF_INET':
-                cache.update({
-                    'ip_v4': data.address,
-                    'netmask_v4': data.netmask,
-                    'broadcast_v4': data.broadcast
+                personal.update({
+                    'ip_v4':
+                    data.address if data.address else str(),
+                    'netmask_v4':
+                    data.netmask if data.netmask else str(),
+                    'broadcast_v4':
+                    data.broadcast if data.broadcast else str()
                 })
             elif data.family.name == 'AF_INET6':
-                cache.update({
-                    'ip_v6': data.address,
-                    'netmask_v6': data.netmask,
-                    'broadcast_v6': data.broadcast
+                personal.update({
+                    'ip_v6':
+                    data.address if data.address else str(),
+                    'netmask_v6':
+                    data.netmask if data.netmask else str(),
+                    'broadcast_v6':
+                    data.broadcast if data.broadcast else str()
                 })
             elif data.family.name == 'AF_PACKET':
-                cache.update({'mac': data.address})
-        net_info.append(cache)
+                personal.update(
+                    {'mac': data.address if data.address else str()})
+        net_info.append(personal)
 
     return net_info
 
