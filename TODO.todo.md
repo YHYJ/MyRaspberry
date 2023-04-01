@@ -1,2 +1,3 @@
+  - [ ] 增加隐藏框，点击时显示信息，点击其他按钮隐藏 (2023-04-01 20:12)
   - [ ] 更新Bootloader和EEPROM：https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md (2021-06-25 09:54)
   - [ ] Raspberry Pi Zero安装Arch Linux ARM并连接wifi成功，接下来是使能其USB SSH功能 (2021-07-02 18:03)
