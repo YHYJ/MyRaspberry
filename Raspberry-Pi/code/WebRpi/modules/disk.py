@@ -22,6 +22,7 @@ def get_disk_info():
     digit = 1  # 结果精确度（保留多少位小数）
 
     disk_info = dict()
+    disk_info['path'] = disk_path
     disk_info['total'] = round(diskinfo[0] / muse, digit)
     disk_info['used'] = round(diskinfo[1] / muse, digit)
     disk_info['free'] = round(diskinfo[2] / muse, digit)

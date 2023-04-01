@@ -11,14 +11,30 @@
         <script src = "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.js" charset = "utf-8"></script>
 
         <!-- [> [> [> [> [> [> UPS信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">
+        <p style = "width: 100%; display: block;">UPS监控:&nbsp&nbsp&nbsp<button id = "ViewUps"></button>&nbsp&nbsp&nbsp<button id = "ups_refresh">Refresh</button></p>
+        <div id = "UpsInfo" style = "display: none;">
             <span id = "UPS_Time"></span>
             <span id = "UPS_Status"></span>
             <span id = "UPS_Tag"></span>
             <span id = "UPS_Voltage"></span>V |
             <span id = "UPS_Capacity"></span>%
-            &nbsp&nbsp&nbsp<button id = "ups_refresh">Refresh</button>
-        </p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewUps").html("View")
+                $("#ViewUps").click(function(){
+                    let attr = document.getElementById('UpsInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewUps").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewUps").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
         <!-- 确保不用点击"Refresh"按钮即可显示 -->
         <script charset = "utf-8">
             $.ajax({
@@ -57,12 +73,28 @@
         </script>
 
         <!-- [> [> [> [> [> [> CPU信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">
+        <p style = "width: 100%; display: block;">CPU监控:&nbsp&nbsp&nbsp<button id = "ViewCpu"></button>&nbsp&nbsp&nbsp<button id = "cpu_refresh">Refresh</button></p>
+        <div id = "CpuInfo" style = "display: none;">
             CPU利用率: <span id = "CPU_Percent"></span>% |
             CPU负载: <span id = "CPU_Load_1"></span>, <span id = "CPU_Load_5"></span>, <span id = "CPU_Load_10"></span> |
             <span id = "CPU_Core"></span>核<span id = "CPU_Thread"></span>线程
-            &nbsp&nbsp&nbsp<button id = "cpu_refresh">Refresh</button>
-        </p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewCpu").html("View")
+                $("#ViewCpu").click(function(){
+                    let attr = document.getElementById('CpuInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewCpu").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewCpu").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
         <!-- 确保不用点击"Refresh"按钮即可显示 -->
         <script charset = "utf-8">
             $.ajax({
@@ -103,13 +135,29 @@
         </script>
 
         <!-- [> [> [> [> [> [> 内存信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">
+        <p style = "width: 100%; display: block;">内存监控:&nbsp&nbsp&nbsp<button id = "ViewMem"></button>&nbsp&nbsp&nbsp<button id = "mem_refresh">Refresh</button></p>
+        <div id = "MemInfo" style = "display: none;">
             总物理内存: <span id = "MEM_Total"></span>MiB |
             已用百分比: <span id = "MEM_Percent"></span>% |
             已用: <span id = "MEM_Used"></span>MiB |
             可用: <span id = "MEM_Available"></span>MiB
-            &nbsp&nbsp&nbsp<button id = "mem_refresh">Refresh</button>
-        </p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewMem").html("View")
+                $("#ViewMem").click(function(){
+                    let attr = document.getElementById('MemInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewMem").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewMem").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
         <!-- 确保不用点击"Refresh"按钮即可显示 -->
         <script charset = "utf-8">
             $.ajax({
@@ -146,13 +194,29 @@
         </script>
 
         <!-- [> [> [> [> [> [> 交换分区信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">
+        <p style = "width: 100%; display: block;">Swap监控:&nbsp&nbsp&nbsp<button id = "ViewSwap"></button>&nbsp&nbsp&nbsp<button id = "swap_refresh">Refresh</button></p>
+        <div id = "SwapInfo" style = "display: none;">
             总交换分区: <span id = "SWAP_Total"></span>MiB |
             已用百分比: <span id = "SWAP_Percent"></span>% |
             已用: <span id = "SWAP_Used"></span>MiB |
             可用: <span id = "SWAP_Free"></span>MiB
-            &nbsp&nbsp&nbsp<button id = "swap_refresh">Refresh</button>
-        </p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewSwap").html("View")
+                $("#ViewSwap").click(function(){
+                    let attr = document.getElementById('SwapInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewSwap").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewSwap").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
         <!-- 确保不用点击"Refresh"按钮即可显示 -->
         <script charset = "utf-8">
             $.ajax({
@@ -189,13 +253,30 @@
         </script>
 
         <!-- [> [> [> [> [> [> 磁盘信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">
+        <p style = "width: 100%; display: block;">磁盘监控:&nbsp&nbsp&nbsp<button id = "ViewDisk"></button>&nbsp&nbsp&nbsp<button id = "disk_refresh">Refresh</button></p>
+        <div id = "DiskInfo" style = "display: none;">
+            挂载点: <span id = "DISK_Path"></span> |
             磁盘大小: <span id = "DISK_Total"></span>GiB |
             已用百分比: <span id = "DISK_Percent"></span>% |
             已用: <span id = "DISK_Used"></span>GiB |
             可用: <span id = "DISK_Free"></span>GiB
-            &nbsp&nbsp&nbsp<button id = "disk_refresh">Refresh</button>
-        </p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewDisk").html("View")
+                $("#ViewDisk").click(function(){
+                    let attr = document.getElementById('DiskInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewDisk").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewDisk").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
         <!-- 确保不用点击"Refresh"按钮即可显示 -->
         <script charset = "utf-8">
             $.ajax({
@@ -203,6 +284,7 @@
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
+                    $("#DISK_Path").html(data.disk.path);
                     $("#DISK_Total").html(data.disk.total);
                     $("#DISK_Percent").html(data.disk.percent);
                     $("#DISK_Used").html(data.disk.used);
@@ -220,6 +302,7 @@
                         type: "GET",
                         dataType: "json",
                         success: function (data) {
+                            $("#DISK_Path").html(data.disk.path);
                             $("#DISK_Total").html(data.disk.total);
                             $("#DISK_Percent").html(data.disk.percent);
                             $("#DISK_Used").html(data.disk.used);
@@ -232,9 +315,26 @@
         </script>
 
         <!-- [> [> [> [> [> [> 网卡信息 <] <] <] <] <] <] -->
-        <!-- <p style = "width: 100%; display: block;"> 网卡监控: -->
-        <p style = "width: 100%; display: block;">网卡监控:&nbsp&nbsp&nbsp<button id = "net_refresh">Refresh</button></p>
-        <p id = "NET"></p>
+        <p style = "width: 100%; display: block;">网卡监控:&nbsp&nbsp&nbsp<button id = "ViewNet"></button>&nbsp&nbsp&nbsp<button id = "net_refresh">Refresh</button></p>
+        <div id = "NetInfo" style = "display: none;">
+            <p id = "NET"></p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewNet").html("View")
+                $("#ViewNet").click(function(){
+                    let attr = document.getElementById('NetInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewNet").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewNet").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
         <!-- 确保不用点击"Refresh"按钮即可显示 -->
         <script charset = "utf-8">
             $.ajax({
