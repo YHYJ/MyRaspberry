@@ -19,7 +19,9 @@ from modules.disk import get_disk_info
 from modules.mem import get_mem_info
 from modules.net import get_net_info
 from modules.swap import get_swap_info
+from modules.sys import get_sys_info
 from modules.ups import get_ups_info
+from modules.user import get_user_info
 
 app = Flask(__name__)
 
@@ -35,6 +37,22 @@ def ups():
     """Update UPS info"""
     ajax = dict()
     ajax['ups'] = get_ups_info()
+    return json.dumps(ajax)
+
+
+@app.route('/update/sys')
+def sys():
+    """Update System info"""
+    ajax = dict()
+    ajax['sys'] = get_sys_info()
+    return json.dumps(ajax)
+
+
+@app.route('/update/user')
+def user():
+    """Update User info"""
+    ajax = dict()
+    ajax['user'] = get_user_info()
     return json.dumps(ajax)
 
 
