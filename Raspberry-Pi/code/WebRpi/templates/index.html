@@ -78,6 +78,78 @@
             })
         </script>
 
+        <!-- [> [> [> [> [> [> 系统信息 <] <] <] <] <] <] -->
+        <p style = "width: 100%; display: block;">系统监控:&nbsp&nbsp&nbsp<button id = "ViewSys"></button>&nbsp&nbsp&nbsp<button id = "RefreshSYS">Refresh</button></p>
+        <div id = "SysInfo" style = "display: none;">
+            <p id = "SYS"></p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewSys").html("View")
+                $("#ViewSys").click(function(){
+                    let attr = document.getElementById('SysInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewSys").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewSys").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/sys",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    var sys=data.sys;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < sys.length; i++) {
+                        ul.append("操作系统: <span>"+sys[i].system+"</span><br>");
+                        ul.append("内核版本: <span>"+sys[i].kernel+"</span><br>");
+                        ul.append("主机名: <span>"+sys[i].hostname+"</span><br>");
+                        ul.append("硬件架构: <span>"+sys[i].machine+"</span><br>");
+                        ul.append("系统位数: <span>"+sys[i].arch+"</span><br>");
+                        ul.append("开机时间: <span>"+sys[i].boot_time+"</span><br>");
+                        ul.append("运行时长: <span>"+sys[i].run_time+"</span><br>");
+                    }
+                    $("#SYS").html(ul);
+                    console.log(data);
+                }
+            })
+        </script>
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
+        <script charset = "utf-8">
+            $(function() {
+                $("#RefreshSYS").click(function(){
+                    $.ajax({
+                        url: "update/sys",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            var sys=data.sys;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < sys.length; i++) {
+                                ul.append("操作系统: <span>"+sys[i].system+"</span><br>");
+                                ul.append("内核版本: <span>"+sys[i].kernel+"</span><br>");
+                                ul.append("主机名: <span>"+sys[i].hostname+"</span><br>");
+                                ul.append("硬件架构: <span>"+sys[i].machine+"</span><br>");
+                                ul.append("系统位数: <span>"+sys[i].arch+"</span><br>");
+                                ul.append("开机时间: <span>"+sys[i].boot_time+"</span><br>");
+                                ul.append("运行时长: <span>"+sys[i].run_time+"</span><br>");
+                            }
+                            $("#SYS").html(ul);
+                            console.log(data);
+                        }
+                    })
+                })
+            })
+        </script>
+
         <!-- [> [> [> [> [> [> CPU信息 <] <] <] <] <] <] -->
         <p style = "width: 100%; display: block;">CPU监控:&nbsp&nbsp&nbsp<button id = "ViewCpu"></button>&nbsp&nbsp&nbsp<button id = "RefreshCPU">Refresh</button></p>
         <div id = "CpuInfo" style = "display: none;">
@@ -335,6 +407,72 @@
                                 ul.append("可用: <span>"+disk[i].free+"</span>GiB<br>");
                             }
                             $("#DISK").html(ul);
+                            console.log(data);
+                        }
+                    })
+                })
+            })
+        </script>
+
+        <!-- [> [> [> [> [> [> 用户信息 <] <] <] <] <] <] -->
+        <p style = "width: 100%; display: block;">用户监控:&nbsp&nbsp&nbsp<button id = "ViewUser"></button>&nbsp&nbsp&nbsp<button id = "RefreshUSER">Refresh</button></p>
+        <div id = "UserInfo" style = "display: none;">
+            <p id = "USER"></p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewUser").html("View")
+                $("#ViewUser").click(function(){
+                    let attr = document.getElementById('UserInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewUser").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewUser").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/user",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    var user=data.user;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < user.length; i++) {
+                        ul.append("<li>"+user[i].name+"</li>");
+                        ul.append("TTY: <span>"+user[i].terminal+"</span><br>");
+                        ul.append("来自: <span>"+user[i].host+"</span><br>");
+                        ul.append("登录于: <span>"+user[i].started+"</span><br>");
+                    }
+                    $("#USER").html(ul);
+                    console.log(data);
+                }
+            })
+        </script>
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
+        <script charset = "utf-8">
+            $(function() {
+                $("#RefreshUSER").click(function(){
+                    $.ajax({
+                        url: "update/user",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            var user=data.user;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < user.length; i++) {
+                                ul.append("<li>"+user[i].name+"</li>");
+                                ul.append("TTY: <span>"+user[i].terminal+"</span><br>");
+                                ul.append("来自: <span>"+user[i].host+"</span><br>");
+                                ul.append("登录于: <span>"+user[i].started+"</span><br>");
+                            }
+                            $("#USER").html(ul);
                             console.log(data);
                         }
                     })

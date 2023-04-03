@@ -9,6 +9,8 @@ Created Time: 2023-04-03 00:57:31
 Description: 用户监控
 """
 
+from datetime import datetime
+
 import psutil
 
 
@@ -18,17 +20,14 @@ def get_user_info():
 
     user_info = list()
     for user in users:
-        personal = {
-            'name': str(),
-            'terminal': str(),
-            'host': str(),
-            'started': str()
-        }
+        personal = dict()
+        started = datetime.strftime(datetime.fromtimestamp(user[3]),
+                                    "%Y-%m-%d %H:%M:%S")
         personal.update({
             'name': user[0],
             'terminal': user[1],
             'host': user[2],
-            'started': user[3]
+            'started': started
         })
         user_info.append(personal)
 
