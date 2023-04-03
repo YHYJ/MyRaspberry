@@ -41,7 +41,7 @@ def get_net_info():
             elif data.family.name == 'AF_INET6':
                 personal.update({
                     'ip_v6':
-                    data.address if data.address else str(),
+                    data.address.split('%')[0] if data.address else str(),
                     'netmask_v6':
                     data.netmask if data.netmask else str(),
                     'broadcast_v6':
