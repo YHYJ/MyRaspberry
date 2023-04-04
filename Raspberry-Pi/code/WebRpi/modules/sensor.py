@@ -26,7 +26,7 @@ def get_sensor_info():
         personal = dict()
         for data in datas:
             personal.update({
-                'name': name,
+                'name': '{}_{}'.format(name.split('_')[0].upper(), 'Temperature'),
                 'current': data.current,
                 'high': data.high,
                 'critical': data.critical
