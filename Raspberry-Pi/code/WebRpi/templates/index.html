@@ -218,6 +218,72 @@
             })
         </script>
 
+        <!-- [> [> [> [> [> [> 传感器信息 <] <] <] <] <] <] -->
+        <p style = "width: 100%; display: block;">传感器监控:&nbsp&nbsp&nbsp<button id = "ViewSensor"></button>&nbsp&nbsp&nbsp<button id = "RefreshSENSOR">Refresh</button></p>
+        <div id = "SensorInfo" style = "display: none;">
+            <p id = "SENSOR"></p>
+        </div>
+        <!-- 显示/隐藏按钮 -->
+        <script charset = "utf-8">
+            $(function(){
+                $("#ViewSensor").html("View")
+                $("#ViewSensor").click(function(){
+                    let attr = document.getElementById('SensorInfo')
+                    if(attr.style.display == 'block'){
+                        $("#ViewSensor").html("View")
+                        attr.style.display = 'none'
+                    }else{
+                        $("#ViewSensor").html("Hide")
+                        attr.style.display = 'block'
+                    }
+                })
+            })
+        </script>
+        <!-- 确保不用点击"Refresh"按钮即可显示 -->
+        <script charset = "utf-8">
+            $.ajax({
+                url: "update/sensor",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    var sensor=data.sensor;
+                    var ul=$("<ul></ul>");
+                    for (var i = 0; i < sensor.length; i++) {
+                        ul.append("<li>"+sensor[i].name+"</li>");
+                        ul.append("当前温度: <span>"+sensor[i].current+"</span>°C<br>");
+                        ul.append("最高温度: <span>"+sensor[i].high+"</span>°C<br>");
+                        ul.append("告警温度: <span>"+sensor[i].critical+"</span>°C<br>");
+                    }
+                    $("#SENSOR").html(ul);
+                    console.log(data);
+                }
+            })
+        </script>
+        <!-- 确保点击"Refresh"按钮即可刷新 -->
+        <script charset = "utf-8">
+            $(function() {
+                $("#RefreshSENSOR").click(function(){
+                    $.ajax({
+                        url: "update/sensor",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            var sensor=data.sensor;
+                            var ul=$("<ul></ul>");
+                            for (var i = 0; i < sensor.length; i++) {
+                                ul.append("<li>"+sensor[i].name+"</li>");
+                                ul.append("当前温度: <span>"+sensor[i].current+"</span>°C<br>");
+                                ul.append("最高温度: <span>"+sensor[i].high+"</span>°C<br>");
+                                ul.append("告警温度: <span>"+sensor[i].critical+"</span>°C<br>");
+                            }
+                            $("#SENSOR").html(ul);
+                            console.log(data);
+                        }
+                    })
+                })
+            })
+        </script>
+
         <!-- [> [> [> [> [> [> 内存信息 <] <] <] <] <] <] -->
         <p style = "width: 100%; display: block;">内存监控:&nbsp&nbsp&nbsp<button id = "ViewMem"></button>&nbsp&nbsp&nbsp<button id = "RefreshMEM">Refresh</button></p>
         <div id = "MemInfo" style = "display: none;">
@@ -557,6 +623,5 @@
                 })
             })
         </script>
-
     </body>
 </html>

@@ -18,6 +18,7 @@ from modules.cpu import get_cpu_info
 from modules.disk import get_disk_info
 from modules.mem import get_mem_info
 from modules.net import get_net_info
+from modules.sensor import get_sensor_info
 from modules.swap import get_swap_info
 from modules.sys import get_sys_info
 from modules.ups import get_ups_info
@@ -61,6 +62,14 @@ def cpu():
     """Update CPU info"""
     ajax = dict()
     ajax['cpu'] = get_cpu_info()
+    return json.dumps(ajax)
+
+
+@app.route('/update/sensor')
+def sensor():
+    """Update Sensor info"""
+    ajax = dict()
+    ajax['sensor'] = get_sensor_info()
     return json.dumps(ajax)
 
 
