@@ -45,11 +45,11 @@
                     var ups=data.ups;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < ups.length; i++) {
-                        ul.append("电池电量: <span>"+ups[i].capacity+"</span>%<br>");
-                        ul.append("电池电压: <span>"+ups[i].voltage+"</span>V<br>");
-                        ul.append("电池状态: <span>"+ups[i].status+"</span><br>");
-                        ul.append("是否充电: <span>"+ups[i].tag+"</span><br>");
-                        ul.append("系统时间: <span>"+ups[i].time+"</span><br>");
+                        ul.append("<span>电池电量: "+ups[i].capacity+"%</span><br>");
+                        ul.append("<span>电池电压: "+ups[i].voltage+"V</span><br>");
+                        ul.append("<span>电池状态: "+ups[i].status+"</span><br>");
+                        ul.append("<span>是否充电: "+ups[i].tag+"</span><br>");
+                        ul.append("<span>系统时间: "+ups[i].time+"</span><br>");
                     }
                     $("#UPS").html(ul);
                     console.log(data);
@@ -68,11 +68,11 @@
                             var ups=data.ups;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < ups.length; i++) {
-                                ul.append("电池电量: <span>"+ups[i].capacity+"</span>%<br>");
-                                ul.append("电池电压: <span>"+ups[i].voltage+"</span>V<br>");
-                                ul.append("电池状态: <span>"+ups[i].status+"</span><br>");
-                                ul.append("是否充电: <span>"+ups[i].tag+"</span><br>");
-                                ul.append("系统时间: <span>"+ups[i].time+"</span><br>");
+                                ul.append("<span>电池电量: "+ups[i].capacity+"%</span><br>");
+                                ul.append("<span>电池电压: "+ups[i].voltage+"V</span><br>");
+                                ul.append("<span>电池状态: "+ups[i].status+"</span><br>");
+                                ul.append("<span>是否充电: "+ups[i].tag+"</span><br>");
+                                ul.append("<span>系统时间: "+ups[i].time+"</span><br>");
                             }
                             $("#UPS").html(ul);
                             console.log(data);
@@ -113,13 +113,13 @@
                     var sys=data.sys;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < sys.length; i++) {
-                        ul.append("操作系统: <span>"+sys[i].system+"</span><br>");
-                        ul.append("内核版本: <span>"+sys[i].kernel+"</span><br>");
-                        ul.append("主机名: <span>"+sys[i].hostname+"</span><br>");
-                        ul.append("硬件架构: <span>"+sys[i].machine+"</span><br>");
-                        ul.append("系统位数: <span>"+sys[i].arch+"</span><br>");
-                        ul.append("开机时间: <span>"+sys[i].boot_time+"</span><br>");
-                        ul.append("运行时长: <span>"+sys[i].run_time+"</span><br>");
+                        ul.append("<span>操作系统: "+sys[i].system+"</span><br>");
+                        ul.append("<span>内核版本: "+sys[i].kernel+"</span><br>");
+                        ul.append("<span>主机名: "+sys[i].hostname+"</span><br>");
+                        ul.append("<span>硬件架构: "+sys[i].machine+"</span><br>");
+                        ul.append("<span>系统位数: "+sys[i].arch+"</span><br>");
+                        ul.append("<span>开机时间: "+sys[i].boot_time+"</span><br>");
+                        ul.append("<span>运行时长: "+sys[i].run_time+"</span><br>");
                     }
                     $("#SYS").html(ul);
                     console.log(data);
@@ -138,13 +138,13 @@
                             var sys=data.sys;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < sys.length; i++) {
-                                ul.append("操作系统: <span>"+sys[i].system+"</span><br>");
-                                ul.append("内核版本: <span>"+sys[i].kernel+"</span><br>");
-                                ul.append("主机名: <span>"+sys[i].hostname+"</span><br>");
-                                ul.append("硬件架构: <span>"+sys[i].machine+"</span><br>");
-                                ul.append("系统位数: <span>"+sys[i].arch+"</span><br>");
-                                ul.append("开机时间: <span>"+sys[i].boot_time+"</span><br>");
-                                ul.append("运行时长: <span>"+sys[i].run_time+"</span><br>");
+                                ul.append("<span>操作系统: "+sys[i].system+"</span><br>");
+                                ul.append("<span>内核版本: "+sys[i].kernel+"</span><br>");
+                                ul.append("<span>主机名: "+sys[i].hostname+"</span><br>");
+                                ul.append("<span>硬件架构: "+sys[i].machine+"</span><br>");
+                                ul.append("<span>系统位数: "+sys[i].arch+"</span><br>");
+                                ul.append("<span>开机时间: "+sys[i].boot_time+"</span><br>");
+                                ul.append("<span>运行时长: "+sys[i].run_time+"</span><br>");
                             }
                             $("#SYS").html(ul);
                             console.log(data);
@@ -185,9 +185,9 @@
                     var cpu=data.cpu;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < cpu.length; i++) {
-                        ul.append("CPU配置: <span>"+cpu[i].core+"</span>核<span>"+cpu[i].thread+"</span>线程<br>");
-                        ul.append("CPU利用率: <span>"+cpu[i].percent+"</span>%<br>");
-                        ul.append("CPU负载: <span>"+cpu[i].load_1+"</span>, <span>"+cpu[i].load_5+"</span>, <span>"+cpu[i].load_10+"</span><br>");
+                        ul.append("<span>CPU配置: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
+                        ul.append("<span>CPU利用率: "+cpu[i].percent+"%</span><br>");
+                        ul.append("<span>CPU负载: "+cpu[i].load_1+", "+cpu[i].load_5+", "+cpu[i].load_10+"</span><br>");
                     }
                     $("#CPU").html(ul);
                     console.log(data);
@@ -206,9 +206,9 @@
                             var cpu=data.cpu;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < cpu.length; i++) {
-                                ul.append("CPU配置: <span>"+cpu[i].core+"</span>核<span>"+cpu[i].thread+"</span>线程<br>");
-                                ul.append("CPU利用率: <span>"+cpu[i].percent+"</span>%<br>");
-                                ul.append("CPU负载: <span>"+cpu[i].load_1+"</span>, <span>"+cpu[i].load_5+"</span>, <span>"+cpu[i].load_10+"</span><br>");
+                                ul.append("<span>CPU配置: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
+                                ul.append("<span>CPU利用率: "+cpu[i].percent+"%</span><br>");
+                                ul.append("<span>CPU负载: "+cpu[i].load_1+", "+cpu[i].load_5+", "+cpu[i].load_10+"</span><br>");
                             }
                             $("#CPU").html(ul);
                             console.log(data);
@@ -250,9 +250,9 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < sensor.length; i++) {
                         ul.append("<li>"+sensor[i].name+"</li>");
-                        ul.append("当前温度: <span>"+sensor[i].current+"</span>°C<br>");
-                        ul.append("最高温度: <span>"+sensor[i].high+"</span>°C<br>");
-                        ul.append("告警温度: <span>"+sensor[i].critical+"</span>°C<br>");
+                        ul.append("<span>当前温度: "+sensor[i].current+"°C</span><br>");
+                        ul.append("<span>最高温度: "+sensor[i].high+"°C</span><br>");
+                        ul.append("<span>告警温度: "+sensor[i].critical+"°C</span><br>");
                     }
                     $("#SENSOR").html(ul);
                     console.log(data);
@@ -272,9 +272,9 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < sensor.length; i++) {
                                 ul.append("<li>"+sensor[i].name+"</li>");
-                                ul.append("当前温度: <span>"+sensor[i].current+"</span>°C<br>");
-                                ul.append("最高温度: <span>"+sensor[i].high+"</span>°C<br>");
-                                ul.append("告警温度: <span>"+sensor[i].critical+"</span>°C<br>");
+                                ul.append("<span>当前温度: "+sensor[i].current+"°C</span><br>");
+                                ul.append("<span>最高温度: "+sensor[i].high+"°C</span><br>");
+                                ul.append("<span>告警温度: "+sensor[i].critical+"°C</span><br>");
                             }
                             $("#SENSOR").html(ul);
                             console.log(data);
@@ -315,10 +315,10 @@
                     var mem=data.mem;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < mem.length; i++) {
-                        ul.append("总物理内存: <span>"+mem[i].total+"</span>MiB<br>");
-                        ul.append("已用百分比: <span>"+mem[i].percent+"</span>%<br>");
-                        ul.append("已用: <span>"+mem[i].used+"</span>MiB<br>");
-                        ul.append("可用: <span>"+mem[i].available+"</span>MiB<br>");
+                        ul.append("<span>总物理内存: "+mem[i].total+"MiB</span><br>");
+                        ul.append("<span>已用百分比: "+mem[i].percent+"%</span><br>");
+                        ul.append("<span>已用: "+mem[i].used+"MiB</span><br>");
+                        ul.append("<span>可用: "+mem[i].available+"MiB</span><br>");
                     }
                     $("#MEM").html(ul);
                     console.log(data);
@@ -337,10 +337,10 @@
                             var mem=data.mem;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < mem.length; i++) {
-                                ul.append("总物理内存: <span>"+mem[i].total+"</span>MiB<br>");
-                                ul.append("已用百分比: <span>"+mem[i].percent+"</span>%<br>");
-                                ul.append("已用: <span>"+mem[i].used+"</span>MiB<br>");
-                                ul.append("可用: <span>"+mem[i].available+"</span>MiB<br>");
+                                ul.append("<span>总物理内存: "+mem[i].total+"MiB</span><br>");
+                                ul.append("<span>已用百分比: "+mem[i].percent+"%</span><br>");
+                                ul.append("<span>已用: "+mem[i].used+"MiB</span><br>");
+                                ul.append("<span>可用: "+mem[i].available+"MiB</span><br>");
                             }
                             $("#MEM").html(ul);
                             console.log(data);
@@ -381,10 +381,10 @@
                     var swap=data.swap;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < swap.length; i++) {
-                        ul.append("总交换分区: <span>"+swap[i].total+"</span>MiB<br>");
-                        ul.append("已用百分比: <span>"+swap[i].percent+"</span>%<br>");
-                        ul.append("已用: <span>"+swap[i].used+"</span>MiB<br>");
-                        ul.append("可用: <span>"+swap[i].free+"</span>MiB<br>");
+                        ul.append("<span>总交换分区: "+swap[i].total+"MiB</span><br>");
+                        ul.append("<span>已用百分比: "+swap[i].percent+"%</span><br>");
+                        ul.append("<span>已用: "+swap[i].used+"MiB</span><br>");
+                        ul.append("<span>可用: "+swap[i].free+"MiB</span><br>");
                     }
                     $("#SWAP").html(ul);
                     console.log(data);
@@ -403,10 +403,10 @@
                             var swap=data.swap;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < swap.length; i++) {
-                                ul.append("总交换分区: <span>"+swap[i].total+"</span>MiB<br>");
-                                ul.append("已用百分比: <span>"+swap[i].percent+"</span>%<br>");
-                                ul.append("已用: <span>"+swap[i].used+"</span>MiB<br>");
-                                ul.append("可用: <span>"+swap[i].free+"</span>MiB<br>");
+                                ul.append("<span>总交换分区: "+swap[i].total+"MiB</span><br>");
+                                ul.append("<span>已用百分比: "+swap[i].percent+"%</span><br>");
+                                ul.append("<span>已用: "+swap[i].used+"MiB</span><br>");
+                                ul.append("<span>可用: "+swap[i].free+"MiB</span><br>");
                             }
                             $("#SWAP").html(ul);
                             console.log(data);
@@ -448,10 +448,10 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < disk.length; i++) {
                         ul.append("<li>"+disk[i].path+"</li>");
-                        ul.append("总大小: <span>"+disk[i].total+"</span>GiB<br>");
-                        ul.append("已用百分比: <span>"+disk[i].percent+"</span>%<br>");
-                        ul.append("已用: <span>"+disk[i].used+"</span>GiB<br>");
-                        ul.append("可用: <span>"+disk[i].free+"</span>GiB<br>");
+                        ul.append("<span>总大小: "+disk[i].total+"GiB</span><br>");
+                        ul.append("<span>已用百分比: "+disk[i].percent+"%</span><br>");
+                        ul.append("<span>已用: "+disk[i].used+"GiB</span><br>");
+                        ul.append("<span>可用: "+disk[i].free+"GiB</span><br>");
                     }
                     $("#DISK").html(ul);
                     console.log(data);
@@ -471,10 +471,10 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < disk.length; i++) {
                                 ul.append("<li>"+disk[i].path+"</li>");
-                                ul.append("总大小: <span>"+disk[i].total+"</span>GiB<br>");
-                                ul.append("已用百分比: <span>"+disk[i].percent+"</span>%<br>");
-                                ul.append("已用: <span>"+disk[i].used+"</span>GiB<br>");
-                                ul.append("可用: <span>"+disk[i].free+"</span>GiB<br>");
+                                ul.append("<span>总大小: "+disk[i].total+"GiB</span><br>");
+                                ul.append("<span>已用百分比: "+disk[i].percent+"%</span><br>");
+                                ul.append("<span>已用: "+disk[i].used+"GiB</span><br>");
+                                ul.append("<span>可用: "+disk[i].free+"GiB</span><br>");
                             }
                             $("#DISK").html(ul);
                             console.log(data);
@@ -516,9 +516,9 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < user.length; i++) {
                         ul.append("<li>"+user[i].name+"</li>");
-                        ul.append("TTY: <span>"+user[i].terminal+"</span><br>");
-                        ul.append("来自: <span>"+user[i].host+"</span><br>");
-                        ul.append("登录于: <span>"+user[i].started+"</span><br>");
+                        ul.append("<span>TTY: "+user[i].terminal+"</span><br>");
+                        ul.append("<span>来自: "+user[i].host+"</span><br>");
+                        ul.append("<span>登录于: "+user[i].started+"</span><br>");
                     }
                     $("#USER").html(ul);
                     console.log(data);
@@ -538,9 +538,9 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < user.length; i++) {
                                 ul.append("<li>"+user[i].name+"</li>");
-                                ul.append("TTY: <span>"+user[i].terminal+"</span><br>");
-                                ul.append("来自: <span>"+user[i].host+"</span><br>");
-                                ul.append("登录于: <span>"+user[i].started+"</span><br>");
+                                ul.append("<span>TTY: "+user[i].terminal+"</span><br>");
+                                ul.append("<span>来自: "+user[i].host+"</span><br>");
+                                ul.append("<span>登录于: "+user[i].started+"</span><br>");
                             }
                             $("#USER").html(ul);
                             console.log(data);
@@ -582,13 +582,13 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < net.length; i++) {
                         ul.append("<li>"+net[i].name+"</li>");
-                        ul.append("IPv4: <span>"+net[i].ip_v4+"</span><br>");
-                        ul.append("子网掩码(v4): <span>"+net[i].netmask_v4+"</span><br>");
-                        ul.append("网关(v4): <span>"+net[i].broadcast_v4+"</span><br>");
-                        ul.append("IPv6: <span>"+net[i].ip_v6+"</span><br>");
-                        ul.append("子网掩码(v6): <span>"+net[i].netmask_v6+"</span><br>");
-                        ul.append("网关(v6): <span>"+net[i].broadcast_v6+"</span><br>");
-                        ul.append("MAC地址: <span>"+net[i].mac+"</span>");
+                        ul.append("<span>IPv4: "+net[i].ip_v4+"</span><br>");
+                        ul.append("<span>子网掩码(v4): "+net[i].netmask_v4+"</span><br>");
+                        ul.append("<span>网关(v4): "+net[i].broadcast_v4+"</span><br>");
+                        ul.append("<span>IPv6: "+net[i].ip_v6+"</span><br>");
+                        ul.append("<span>子网掩码(v6): "+net[i].netmask_v6+"</span><br>");
+                        ul.append("<span>网关(v6): "+net[i].broadcast_v6+"</span><br>");
+                        ul.append("<span>MAC地址: "+net[i].mac+"</span><br>");
                     }
                     $("#NET").html(ul);
                     console.log(data);
@@ -608,13 +608,13 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < net.length; i++) {
                                 ul.append("<li>"+net[i].name+"</li>");
-                                ul.append("IPv4: <span>"+net[i].ip_v4+"</span><br>");
-                                ul.append("子网掩码(v4): <span>"+net[i].netmask_v4+"</span><br>");
-                                ul.append("网关(v4): <span>"+net[i].broadcast_v4+"</span><br>");
-                                ul.append("IPv6: <span>"+net[i].ip_v6+"</span><br>");
-                                ul.append("子网掩码(v6): <span>"+net[i].netmask_v6+"</span><br>");
-                                ul.append("网关(v6): <span>"+net[i].broadcast_v6+"</span><br>");
-                                ul.append("MAC地址: <span>"+net[i].mac+"</span><br>");
+                                ul.append("<span>IPv4: "+net[i].ip_v4+"</span><br>");
+                                ul.append("<span>子网掩码(v4): "+net[i].netmask_v4+"</span><br>");
+                                ul.append("<span>网关(v4): "+net[i].broadcast_v4+"</span><br>");
+                                ul.append("<span>IPv6: "+net[i].ip_v6+"</span><br>");
+                                ul.append("<span>子网掩码(v6): "+net[i].netmask_v6+"</span><br>");
+                                ul.append("<span>网关(v6): "+net[i].broadcast_v6+"</span><br>");
+                                ul.append("<span>MAC地址: "+net[i].mac+"</span><br>");
                             }
                             $("#NET").html(ul);
                             console.log(data);
