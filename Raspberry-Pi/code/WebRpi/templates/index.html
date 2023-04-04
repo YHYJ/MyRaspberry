@@ -4,11 +4,15 @@
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible", content = "ie=edge">
-        <title>Raspberry Pi - Monitor</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
+        <title>Raspberry Pi</title>
     </head>
 
     <body>
-        <script src = "{{ url_for('static',filename='js/jquery-2.1.4.js') }}" charset = "utf-8"></script>
+        <script src="{{ url_for('static', filename='js/jquery-2.1.4.js') }}" charset = "utf-8"></script>
 
         <!-- [> [> [> [> [> [> UPS信息 <] <] <] <] <] <] -->
         <p style = "width: 100%; display: block;">UPS监控:&nbsp&nbsp&nbsp<button id = "ViewUps"></button>&nbsp&nbsp&nbsp<button id = "RefreshUPS">Refresh</button></p>
