@@ -18,6 +18,7 @@ import psutil
 def get_sys_info():
     """获取系统信息"""
     uname = platform.uname()
+    machine = '{}{}'.format(uname[4][0].title(), uname[4][1:].title())
     architecture = platform.architecture()
     boot_ts = psutil.boot_time()
     now_ts = datetime.now()
@@ -29,7 +30,7 @@ def get_sys_info():
     sys_data['system'] = uname[0]
     sys_data['hostname'] = uname[1]
     sys_data['kernel'] = uname[2]
-    sys_data['machine'] = uname[4]
+    sys_data['machine'] = machine
     sys_data['arch'] = architecture[0]
     sys_data['boot_time'] = boot_time
     sys_data['run_time'] = run_time

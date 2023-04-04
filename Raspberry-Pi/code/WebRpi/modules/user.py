@@ -24,10 +24,10 @@ def get_user_info():
         started = datetime.strftime(datetime.fromtimestamp(user[3]),
                                     "%Y-%m-%d %H:%M:%S")
         personal.update({
-            'name': user[0],
-            'terminal': user[1],
-            'host': user[2],
-            'started': started
+            'name': str(user[0]),
+            'terminal': str(user[1]),
+            'host': str(user[2]).split('%')[0],
+            'started': str(started)
         })
         user_info.append(personal)
 
