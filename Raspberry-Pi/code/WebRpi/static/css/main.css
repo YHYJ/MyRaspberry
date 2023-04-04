@@ -1,0 +1,30 @@
+.row-3em inline {
+    display: inline-block;
+    width: 3em;
+    text-align: justify;
+    text-align-last: justify;
+}
+.row-4em inline {
+    display: inline-block;
+    width: 4em;
+    text-align: justify;
+    text-align-last: justify;
+}
+.row-5em inline {
+    display: inline-block;
+    width: 5em;
+    text-align: justify;
+    text-align-last: justify;
+}
+.row-6em inline {
+    display: inline-block;
+    width: 6em;
+    text-align: justify;
+    text-align-last: justify;
+}
+.row-7em inline {
+    display: inline-block;
+    width: 7em;
+    text-align: justify;
+    text-align-last: justify;
+}

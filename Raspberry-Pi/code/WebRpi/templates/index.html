@@ -4,19 +4,31 @@
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible", content = "ie=edge">
+        <!-- 引入CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+        <!-- 引入favicon.ico -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
         <link rel="manifest" href="{{ url_for('static', filename='favicon/site.webmanifest') }}">
+        <!-- 网页标题 -->
         <title>Raspberry Pi</title>
+
     </head>
 
     <body>
         <script src="{{ url_for('static', filename='js/jquery-2.1.4.js') }}" charset = "utf-8"></script>
 
         <!-- [> [> [> [> [> [> UPS信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">UPS监控:&nbsp&nbsp&nbsp<button id = "ViewUps"></button>&nbsp&nbsp&nbsp<button id = "RefreshUPS">Refresh</button></p>
-        <div id = "UpsInfo" style = "display: block;">
+        <div class = "row-7em">
+            <inline>UPS监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewUps"></button>
+                <button id = "RefreshUPS">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-4em" id = "UpsInfo" style = "display: block;">
             <p id = "UPS"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -45,11 +57,11 @@
                     var ups=data.ups;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < ups.length; i++) {
-                        ul.append("<span>电池电量: "+ups[i].capacity+"%</span><br>");
-                        ul.append("<span>电池电压: "+ups[i].voltage+"V</span><br>");
-                        ul.append("<span>电池状态: "+ups[i].status+"</span><br>");
-                        ul.append("<span>是否充电: "+ups[i].tag+"</span><br>");
-                        ul.append("<span>系统时间: "+ups[i].time+"</span><br>");
+                        ul.append("<inline>电池电量</inline><span>: "+ups[i].capacity+"%</span><br>");
+                        ul.append("<inline>电池电压</inline><span>: "+ups[i].voltage+"V</span><br>");
+                        ul.append("<inline>电池状态</inline><span>: "+ups[i].status+"</span><br>");
+                        ul.append("<inline>是否充电</inline><span>: "+ups[i].tag+"</span><br>");
+                        ul.append("<inline>系统时间</inline><span>: "+ups[i].time+"</span><br>");
                     }
                     $("#UPS").html(ul);
                     console.log(data);
@@ -68,11 +80,11 @@
                             var ups=data.ups;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < ups.length; i++) {
-                                ul.append("<span>电池电量: "+ups[i].capacity+"%</span><br>");
-                                ul.append("<span>电池电压: "+ups[i].voltage+"V</span><br>");
-                                ul.append("<span>电池状态: "+ups[i].status+"</span><br>");
-                                ul.append("<span>是否充电: "+ups[i].tag+"</span><br>");
-                                ul.append("<span>系统时间: "+ups[i].time+"</span><br>");
+                                ul.append("<inline>电池电量</inline><span>: "+ups[i].capacity+"%</span><br>");
+                                ul.append("<inline>电池电压</inline><span>: "+ups[i].voltage+"V</span><br>");
+                                ul.append("<inline>电池状态</inline><span>: "+ups[i].status+"</span><br>");
+                                ul.append("<inline>是否充电</inline><span>: "+ups[i].tag+"</span><br>");
+                                ul.append("<inline>系统时间</inline><span>: "+ups[i].time+"</span><br>");
                             }
                             $("#UPS").html(ul);
                             console.log(data);
@@ -83,8 +95,15 @@
         </script>
 
         <!-- [> [> [> [> [> [> 系统信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">系统监控:&nbsp&nbsp&nbsp<button id = "ViewSys"></button>&nbsp&nbsp&nbsp<button id = "RefreshSYS">Refresh</button></p>
-        <div id = "SysInfo" style = "display: none;">
+        <div class = "row-7em">
+            <inline>系统监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewSys"></button>
+                <button id = "RefreshSYS">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-4em" id = "SysInfo" style = "display: none;">
             <p id = "SYS"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -113,13 +132,13 @@
                     var sys=data.sys;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < sys.length; i++) {
-                        ul.append("<span>操作系统: "+sys[i].system+"</span><br>");
-                        ul.append("<span>内核版本: "+sys[i].kernel+"</span><br>");
-                        ul.append("<span>主机名: "+sys[i].hostname+"</span><br>");
-                        ul.append("<span>硬件架构: "+sys[i].machine+"</span><br>");
-                        ul.append("<span>系统位数: "+sys[i].arch+"</span><br>");
-                        ul.append("<span>开机时间: "+sys[i].boot_time+"</span><br>");
-                        ul.append("<span>运行时长: "+sys[i].run_time+"</span><br>");
+                        ul.append("<inline>操作系统</inline><span>: "+sys[i].system+"</span><br>");
+                        ul.append("<inline>内核版本</inline><span>: "+sys[i].kernel+"</span><br>");
+                        ul.append("<inline>主机名</inline><span>: "+sys[i].hostname+"</span><br>");
+                        ul.append("<inline>硬件架构</inline><span>: "+sys[i].machine+"</span><br>");
+                        ul.append("<inline>系统位数</inline><span>: "+sys[i].arch+"</span><br>");
+                        ul.append("<inline>开机时间</inline><span>: "+sys[i].boot_time+"</span><br>");
+                        ul.append("<inline>运行时长</inline><span>: "+sys[i].run_time+"</span><br>");
                     }
                     $("#SYS").html(ul);
                     console.log(data);
@@ -138,13 +157,13 @@
                             var sys=data.sys;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < sys.length; i++) {
-                                ul.append("<span>操作系统: "+sys[i].system+"</span><br>");
-                                ul.append("<span>内核版本: "+sys[i].kernel+"</span><br>");
-                                ul.append("<span>主机名: "+sys[i].hostname+"</span><br>");
-                                ul.append("<span>硬件架构: "+sys[i].machine+"</span><br>");
-                                ul.append("<span>系统位数: "+sys[i].arch+"</span><br>");
-                                ul.append("<span>开机时间: "+sys[i].boot_time+"</span><br>");
-                                ul.append("<span>运行时长: "+sys[i].run_time+"</span><br>");
+                                ul.append("<inline>操作系统</inline><span>: "+sys[i].system+"</span><br>");
+                                ul.append("<inline>内核版本</inline><span>: "+sys[i].kernel+"</span><br>");
+                                ul.append("<inline>主机名</inline><span>: "+sys[i].hostname+"</span><br>");
+                                ul.append("<inline>硬件架构</inline><span>: "+sys[i].machine+"</span><br>");
+                                ul.append("<inline>系统位数</inline><span>: "+sys[i].arch+"</span><br>");
+                                ul.append("<inline>开机时间</inline><span>: "+sys[i].boot_time+"</span><br>");
+                                ul.append("<inline>运行时长</inline><span>: "+sys[i].run_time+"</span><br>");
                             }
                             $("#SYS").html(ul);
                             console.log(data);
@@ -155,8 +174,15 @@
         </script>
 
         <!-- [> [> [> [> [> [> CPU信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">CPU监控:&nbsp&nbsp&nbsp<button id = "ViewCpu"></button>&nbsp&nbsp&nbsp<button id = "RefreshCPU">Refresh</button></p>
-        <div id = "CpuInfo" style = "display: none;">
+        <div class = "row-7em">
+            <inline>CPU监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewCpu"></button>
+                <button id = "RefreshCPU">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-5em" id = "CpuInfo" style = "display: none;">
             <p id = "CPU"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -185,9 +211,9 @@
                     var cpu=data.cpu;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < cpu.length; i++) {
-                        ul.append("<span>CPU配置: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
-                        ul.append("<span>CPU利用率: "+cpu[i].percent+"%</span><br>");
-                        ul.append("<span>CPU负载: "+cpu[i].load_1+", "+cpu[i].load_5+", "+cpu[i].load_10+"</span><br>");
+                        ul.append("<inline>CPU配置</inline><span>: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
+                        ul.append("<inline>CPU利用率</inline><span>: "+cpu[i].percent+"%</span><br>");
+                        ul.append("<inline>CPU负载</inline><span>: "+cpu[i].load_1+", "+cpu[i].load_5+", "+cpu[i].load_10+"</span><br>");
                     }
                     $("#CPU").html(ul);
                     console.log(data);
@@ -206,9 +232,9 @@
                             var cpu=data.cpu;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < cpu.length; i++) {
-                                ul.append("<span>CPU配置: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
-                                ul.append("<span>CPU利用率: "+cpu[i].percent+"%</span><br>");
-                                ul.append("<span>CPU负载: "+cpu[i].load_1+", "+cpu[i].load_5+", "+cpu[i].load_10+"</span><br>");
+                                ul.append("<inline>CPU配置</inline><span>: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
+                                ul.append("<inline>CPU利用率</inline><span>: "+cpu[i].percent+"%</span><br>");
+                                ul.append("<inline>CPU负载</inline><span>: "+cpu[i].load_1+", "+cpu[i].load_5+", "+cpu[i].load_10+"</span><br>");
                             }
                             $("#CPU").html(ul);
                             console.log(data);
@@ -219,8 +245,15 @@
         </script>
 
         <!-- [> [> [> [> [> [> 传感器信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">传感器监控:&nbsp&nbsp&nbsp<button id = "ViewSensor"></button>&nbsp&nbsp&nbsp<button id = "RefreshSENSOR">Refresh</button></p>
-        <div id = "SensorInfo" style = "display: none;">
+        <div class = "row-7em">
+            <inline>传感器监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewSensor"></button>
+                <button id = "RefreshSENSOR">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-4em" id = "SensorInfo" style = "display: none;">
             <p id = "SENSOR"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -250,9 +283,9 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < sensor.length; i++) {
                         ul.append("<li>"+sensor[i].name+"</li>");
-                        ul.append("<span>当前温度: "+sensor[i].current+"°C</span><br>");
-                        ul.append("<span>最高温度: "+sensor[i].high+"°C</span><br>");
-                        ul.append("<span>告警温度: "+sensor[i].critical+"°C</span><br>");
+                        ul.append("<inline>当前温度</inline><span>: "+sensor[i].current+"°C</span><br>");
+                        ul.append("<inline>最高温度</inline><span>: "+sensor[i].high+"°C</span><br>");
+                        ul.append("<inline>告警温度</inline><span>: "+sensor[i].critical+"°C</span><br>");
                     }
                     $("#SENSOR").html(ul);
                     console.log(data);
@@ -272,9 +305,9 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < sensor.length; i++) {
                                 ul.append("<li>"+sensor[i].name+"</li>");
-                                ul.append("<span>当前温度: "+sensor[i].current+"°C</span><br>");
-                                ul.append("<span>最高温度: "+sensor[i].high+"°C</span><br>");
-                                ul.append("<span>告警温度: "+sensor[i].critical+"°C</span><br>");
+                                ul.append("<inline>当前温度</inline><span>: "+sensor[i].current+"°C</span><br>");
+                                ul.append("<inline>最高温度</inline><span>: "+sensor[i].high+"°C</span><br>");
+                                ul.append("<inline>告警温度</inline><span>: "+sensor[i].critical+"°C</span><br>");
                             }
                             $("#SENSOR").html(ul);
                             console.log(data);
@@ -285,8 +318,15 @@
         </script>
 
         <!-- [> [> [> [> [> [> 内存信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">内存监控:&nbsp&nbsp&nbsp<button id = "ViewMem"></button>&nbsp&nbsp&nbsp<button id = "RefreshMEM">Refresh</button></p>
-        <div id = "MemInfo" style = "display: none;">
+        <div class = "row-7em">
+            <inline>内存监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewMem"></button>
+                <button id = "RefreshMEM">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-5em" id = "MemInfo" style = "display: none;">
             <p id = "MEM"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -315,10 +355,10 @@
                     var mem=data.mem;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < mem.length; i++) {
-                        ul.append("<span>总物理内存: "+mem[i].total+"MiB</span><br>");
-                        ul.append("<span>已用百分比: "+mem[i].percent+"%</span><br>");
-                        ul.append("<span>已用: "+mem[i].used+"MiB</span><br>");
-                        ul.append("<span>可用: "+mem[i].available+"MiB</span><br>");
+                        ul.append("<inline>总物理内存</inline><span>: "+mem[i].total+"MiB</span><br>");
+                        ul.append("<inline>已用百分比</inline><span>: "+mem[i].percent+"%</span><br>");
+                        ul.append("<inline>已用大小</inline><span>: "+mem[i].used+"MiB</span><br>");
+                        ul.append("<inline>可用大小</inline><span>: "+mem[i].available+"MiB</span><br>");
                     }
                     $("#MEM").html(ul);
                     console.log(data);
@@ -337,10 +377,10 @@
                             var mem=data.mem;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < mem.length; i++) {
-                                ul.append("<span>总物理内存: "+mem[i].total+"MiB</span><br>");
-                                ul.append("<span>已用百分比: "+mem[i].percent+"%</span><br>");
-                                ul.append("<span>已用: "+mem[i].used+"MiB</span><br>");
-                                ul.append("<span>可用: "+mem[i].available+"MiB</span><br>");
+                                ul.append("<inline>总物理内存</inline><span>: "+mem[i].total+"MiB</span><br>");
+                                ul.append("<inline>已用百分比</inline><span>: "+mem[i].percent+"%</span><br>");
+                                ul.append("<inline>已用大小</inline><span>: "+mem[i].used+"MiB</span><br>");
+                                ul.append("<inline>可用大小</inline><span>: "+mem[i].available+"MiB</span><br>");
                             }
                             $("#MEM").html(ul);
                             console.log(data);
@@ -351,8 +391,15 @@
         </script>
 
         <!-- [> [> [> [> [> [> 交换分区信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">Swap监控:&nbsp&nbsp&nbsp<button id = "ViewSwap"></button>&nbsp&nbsp&nbsp<button id = "RefreshSWAP">Refresh</button></p>
-        <div id = "SwapInfo" style = "display: none;">
+        <div class = "row-7em">
+            <inline>交换分区监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewSwap"></button>
+                <button id = "RefreshSWAP">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-5em" id = "SwapInfo" style = "display: none;">
             <p id = "SWAP"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -381,10 +428,10 @@
                     var swap=data.swap;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < swap.length; i++) {
-                        ul.append("<span>总交换分区: "+swap[i].total+"MiB</span><br>");
-                        ul.append("<span>已用百分比: "+swap[i].percent+"%</span><br>");
-                        ul.append("<span>已用: "+swap[i].used+"MiB</span><br>");
-                        ul.append("<span>可用: "+swap[i].free+"MiB</span><br>");
+                        ul.append("<inline>总交换分区</inline><span>: "+swap[i].total+"MiB</span><br>");
+                        ul.append("<inline>已用百分比</inline><span>: "+swap[i].percent+"%</span><br>");
+                        ul.append("<inline>已用大小</inline><span>: "+swap[i].used+"MiB</span><br>");
+                        ul.append("<inline>可用大小</inline><span>: "+swap[i].free+"MiB</span><br>");
                     }
                     $("#SWAP").html(ul);
                     console.log(data);
@@ -403,10 +450,10 @@
                             var swap=data.swap;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < swap.length; i++) {
-                                ul.append("<span>总交换分区: "+swap[i].total+"MiB</span><br>");
-                                ul.append("<span>已用百分比: "+swap[i].percent+"%</span><br>");
-                                ul.append("<span>已用: "+swap[i].used+"MiB</span><br>");
-                                ul.append("<span>可用: "+swap[i].free+"MiB</span><br>");
+                                ul.append("<inline>总交换分区</inline><span>: "+swap[i].total+"MiB</span><br>");
+                                ul.append("<inline>已用百分比</inline><span>: "+swap[i].percent+"%</span><br>");
+                                ul.append("<inline>已用大小</inline><span>: "+swap[i].used+"MiB</span><br>");
+                                ul.append("<inline>可用大小</inline><span>: "+swap[i].free+"MiB</span><br>");
                             }
                             $("#SWAP").html(ul);
                             console.log(data);
@@ -417,8 +464,15 @@
         </script>
 
         <!-- [> [> [> [> [> [> 磁盘信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">磁盘监控:&nbsp&nbsp&nbsp<button id = "ViewDisk"></button>&nbsp&nbsp&nbsp<button id = "RefreshDISK">Refresh</button></p>
-        <div id = "DiskInfo" style = "display: none;">
+        <div class = "row-7em">
+            <inline>磁盘监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewDisk"></button>
+                <button id = "RefreshDISK">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-5em" id = "DiskInfo" style = "display: none;">
             <p id = "DISK"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -448,10 +502,10 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < disk.length; i++) {
                         ul.append("<li>"+disk[i].path+"</li>");
-                        ul.append("<span>总大小: "+disk[i].total+"GiB</span><br>");
-                        ul.append("<span>已用百分比: "+disk[i].percent+"%</span><br>");
-                        ul.append("<span>已用: "+disk[i].used+"GiB</span><br>");
-                        ul.append("<span>可用: "+disk[i].free+"GiB</span><br>");
+                        ul.append("<inline>总磁盘</inline><span>: "+disk[i].total+"GiB</span><br>");
+                        ul.append("<inline>已用百分比</inline><span>: "+disk[i].percent+"%</span><br>");
+                        ul.append("<inline>已用大小</inline><span>: "+disk[i].used+"GiB</span><br>");
+                        ul.append("<inline>可用大小</inline><span>: "+disk[i].free+"GiB</span><br>");
                     }
                     $("#DISK").html(ul);
                     console.log(data);
@@ -471,10 +525,10 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < disk.length; i++) {
                                 ul.append("<li>"+disk[i].path+"</li>");
-                                ul.append("<span>总大小: "+disk[i].total+"GiB</span><br>");
-                                ul.append("<span>已用百分比: "+disk[i].percent+"%</span><br>");
-                                ul.append("<span>已用: "+disk[i].used+"GiB</span><br>");
-                                ul.append("<span>可用: "+disk[i].free+"GiB</span><br>");
+                                ul.append("<inline>总磁盘</inline><span>: "+disk[i].total+"GiB</span><br>");
+                                ul.append("<inline>已用百分比</inline><span>: "+disk[i].percent+"%</span><br>");
+                                ul.append("<inline>已用大小</inline><span>: "+disk[i].used+"GiB</span><br>");
+                                ul.append("<inline>可用大小</inline><span>: "+disk[i].free+"GiB</span><br>");
                             }
                             $("#DISK").html(ul);
                             console.log(data);
@@ -485,8 +539,15 @@
         </script>
 
         <!-- [> [> [> [> [> [> 用户信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">用户监控:&nbsp&nbsp&nbsp<button id = "ViewUser"></button>&nbsp&nbsp&nbsp<button id = "RefreshUSER">Refresh</button></p>
-        <div id = "UserInfo" style = "display: none;">
+        <div class = "row-7em">
+            <inline>用户监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewUser"></button>
+                <button id = "RefreshUSER">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-4em" id = "UserInfo" style = "display: none;">
             <p id = "USER"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -516,9 +577,9 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < user.length; i++) {
                         ul.append("<li>"+user[i].name+"</li>");
-                        ul.append("<span>TTY: "+user[i].terminal+"</span><br>");
-                        ul.append("<span>来自: "+user[i].host+"</span><br>");
-                        ul.append("<span>登录于: "+user[i].started+"</span><br>");
+                        ul.append("<inline>登录终端</inline><span>: "+user[i].terminal+"</span><br>");
+                        ul.append("<inline>用户IP</inline><span>: "+user[i].host+"</span><br>");
+                        ul.append("<inline>登录时间</inline><span>: "+user[i].started+"</span><br>");
                     }
                     $("#USER").html(ul);
                     console.log(data);
@@ -538,9 +599,9 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < user.length; i++) {
                                 ul.append("<li>"+user[i].name+"</li>");
-                                ul.append("<span>TTY: "+user[i].terminal+"</span><br>");
-                                ul.append("<span>来自: "+user[i].host+"</span><br>");
-                                ul.append("<span>登录于: "+user[i].started+"</span><br>");
+                                ul.append("<inline>登录终端</inline><span>: "+user[i].terminal+"</span><br>");
+                                ul.append("<inline>用户IP</inline><span>: "+user[i].host+"</span><br>");
+                                ul.append("<inline>登录时间</inline><span>: "+user[i].started+"</span><br>");
                             }
                             $("#USER").html(ul);
                             console.log(data);
@@ -551,8 +612,15 @@
         </script>
 
         <!-- [> [> [> [> [> [> 网卡信息 <] <] <] <] <] <] -->
-        <p style = "width: 100%; display: block;">网卡监控:&nbsp&nbsp&nbsp<button id = "ViewNet"></button>&nbsp&nbsp&nbsp<button id = "RefreshNET">Refresh</button></p>
-        <div id = "NetInfo" style = "display: none;">
+        <div class = "row-7em">
+            <inline>网卡监控</inline>
+            <span style = "display: inline;">:</span>
+            <span style = "display: inline;">
+                <button id = "ViewNet"></button>
+                <button id = "RefreshNET">Refresh</button>
+            </span>
+        </div>
+        <div class = "row-7em" id = "NetInfo" style = "display: none;">
             <p id = "NET"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -582,13 +650,13 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < net.length; i++) {
                         ul.append("<li>"+net[i].name+"</li>");
-                        ul.append("<span>IPv4: "+net[i].ip_v4+"</span><br>");
-                        ul.append("<span>子网掩码(v4): "+net[i].netmask_v4+"</span><br>");
-                        ul.append("<span>网关(v4): "+net[i].broadcast_v4+"</span><br>");
-                        ul.append("<span>IPv6: "+net[i].ip_v6+"</span><br>");
-                        ul.append("<span>子网掩码(v6): "+net[i].netmask_v6+"</span><br>");
-                        ul.append("<span>网关(v6): "+net[i].broadcast_v6+"</span><br>");
-                        ul.append("<span>MAC地址: "+net[i].mac+"</span><br>");
+                        ul.append("<inline>IPv4</inline><span>: "+net[i].ip_v4+"</span><br>");
+                        ul.append("<inline>子网掩码(v4)</inline><span>: "+net[i].netmask_v4+"</span><br>");
+                        ul.append("<inline>网关(v4)</inline><span>: "+net[i].broadcast_v4+"</span><br>");
+                        ul.append("<inline>IPv6</inline><span>: "+net[i].ip_v6+"</span><br>");
+                        ul.append("<inline>子网掩码(v6)</inline><span>: "+net[i].netmask_v6+"</span><br>");
+                        ul.append("<inline>网关(v6)</inline><span>: "+net[i].broadcast_v6+"</span><br>");
+                        ul.append("<inline>MAC地址</inline><span>: "+net[i].mac+"</span><br>");
                     }
                     $("#NET").html(ul);
                     console.log(data);
@@ -608,13 +676,13 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < net.length; i++) {
                                 ul.append("<li>"+net[i].name+"</li>");
-                                ul.append("<span>IPv4: "+net[i].ip_v4+"</span><br>");
-                                ul.append("<span>子网掩码(v4): "+net[i].netmask_v4+"</span><br>");
-                                ul.append("<span>网关(v4): "+net[i].broadcast_v4+"</span><br>");
-                                ul.append("<span>IPv6: "+net[i].ip_v6+"</span><br>");
-                                ul.append("<span>子网掩码(v6): "+net[i].netmask_v6+"</span><br>");
-                                ul.append("<span>网关(v6): "+net[i].broadcast_v6+"</span><br>");
-                                ul.append("<span>MAC地址: "+net[i].mac+"</span><br>");
+                                ul.append("<inline>IPv4</inline><span>: "+net[i].ip_v4+"</span><br>");
+                                ul.append("<inline>子网掩码(v4)</inline><span>: "+net[i].netmask_v4+"</span><br>");
+                                ul.append("<inline>网关(v4)</inline><span>: "+net[i].broadcast_v4+"</span><br>");
+                                ul.append("<inline>IPv6</inline><span>: "+net[i].ip_v6+"</span><br>");
+                                ul.append("<inline>子网掩码(v6)</inline><span>: "+net[i].netmask_v6+"</span><br>");
+                                ul.append("<inline>网关(v6)</inline><span>: "+net[i].broadcast_v6+"</span><br>");
+                                ul.append("<inline>MAC地址</inline><span>: "+net[i].mac+"</span><br>");
                             }
                             $("#NET").html(ul);
                             console.log(data);
