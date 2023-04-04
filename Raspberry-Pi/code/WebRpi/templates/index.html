@@ -135,10 +135,10 @@
                         ul.append("<inline>操作系统</inline><span>: "+sys[i].system+"</span><br>");
                         ul.append("<inline>内核版本</inline><span>: "+sys[i].kernel+"</span><br>");
                         ul.append("<inline>主机名</inline><span>: "+sys[i].hostname+"</span><br>");
-                        ul.append("<inline>硬件架构</inline><span>: "+sys[i].machine+"</span><br>");
                         ul.append("<inline>系统位数</inline><span>: "+sys[i].arch+"</span><br>");
-                        ul.append("<inline>开机时间</inline><span>: "+sys[i].boot_time+"</span><br>");
+                        ul.append("<inline>硬件架构</inline><span>: "+sys[i].machine+"</span><br>");
                         ul.append("<inline>运行时长</inline><span>: "+sys[i].run_time+"</span><br>");
+                        ul.append("<inline>开机时间</inline><span>: "+sys[i].boot_time+"</span><br>");
                     }
                     $("#SYS").html(ul);
                     console.log(data);
@@ -160,8 +160,8 @@
                                 ul.append("<inline>操作系统</inline><span>: "+sys[i].system+"</span><br>");
                                 ul.append("<inline>内核版本</inline><span>: "+sys[i].kernel+"</span><br>");
                                 ul.append("<inline>主机名</inline><span>: "+sys[i].hostname+"</span><br>");
-                                ul.append("<inline>硬件架构</inline><span>: "+sys[i].machine+"</span><br>");
                                 ul.append("<inline>系统位数</inline><span>: "+sys[i].arch+"</span><br>");
+                                ul.append("<inline>硬件架构</inline><span>: "+sys[i].machine+"</span><br>");
                                 ul.append("<inline>开机时间</inline><span>: "+sys[i].boot_time+"</span><br>");
                                 ul.append("<inline>运行时长</inline><span>: "+sys[i].run_time+"</span><br>");
                             }
@@ -211,9 +211,9 @@
                     var cpu=data.cpu;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < cpu.length; i++) {
-                        ul.append("<inline>CPU配置</inline><span>: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
                         ul.append("<inline>CPU利用率</inline><span>: "+cpu[i].percent+"%</span><br>");
                         ul.append("<inline>CPU负载</inline><span>: "+cpu[i].load_1+", "+cpu[i].load_5+", "+cpu[i].load_10+"</span><br>");
+                        ul.append("<inline>CPU配置</inline><span>: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
                     }
                     $("#CPU").html(ul);
                     console.log(data);
@@ -232,9 +232,9 @@
                             var cpu=data.cpu;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < cpu.length; i++) {
-                                ul.append("<inline>CPU配置</inline><span>: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
                                 ul.append("<inline>CPU利用率</inline><span>: "+cpu[i].percent+"%</span><br>");
                                 ul.append("<inline>CPU负载</inline><span>: "+cpu[i].load_1+", "+cpu[i].load_5+", "+cpu[i].load_10+"</span><br>");
+                                ul.append("<inline>CPU配置</inline><span>: "+cpu[i].core+"核"+cpu[i].thread+"线程</span><br>");
                             }
                             $("#CPU").html(ul);
                             console.log(data);
@@ -355,8 +355,8 @@
                     var mem=data.mem;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < mem.length; i++) {
-                        ul.append("<inline>总物理内存</inline><span>: "+mem[i].total+"MiB</span><br>");
                         ul.append("<inline>已用百分比</inline><span>: "+mem[i].percent+"%</span><br>");
+                        ul.append("<inline>总物理内存</inline><span>: "+mem[i].total+"MiB</span><br>");
                         ul.append("<inline>已用大小</inline><span>: "+mem[i].used+"MiB</span><br>");
                         ul.append("<inline>可用大小</inline><span>: "+mem[i].available+"MiB</span><br>");
                     }
@@ -377,8 +377,8 @@
                             var mem=data.mem;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < mem.length; i++) {
-                                ul.append("<inline>总物理内存</inline><span>: "+mem[i].total+"MiB</span><br>");
                                 ul.append("<inline>已用百分比</inline><span>: "+mem[i].percent+"%</span><br>");
+                                ul.append("<inline>总物理内存</inline><span>: "+mem[i].total+"MiB</span><br>");
                                 ul.append("<inline>已用大小</inline><span>: "+mem[i].used+"MiB</span><br>");
                                 ul.append("<inline>可用大小</inline><span>: "+mem[i].available+"MiB</span><br>");
                             }
@@ -428,8 +428,8 @@
                     var swap=data.swap;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < swap.length; i++) {
-                        ul.append("<inline>总交换分区</inline><span>: "+swap[i].total+"MiB</span><br>");
                         ul.append("<inline>已用百分比</inline><span>: "+swap[i].percent+"%</span><br>");
+                        ul.append("<inline>总交换分区</inline><span>: "+swap[i].total+"MiB</span><br>");
                         ul.append("<inline>已用大小</inline><span>: "+swap[i].used+"MiB</span><br>");
                         ul.append("<inline>可用大小</inline><span>: "+swap[i].free+"MiB</span><br>");
                     }
@@ -450,8 +450,8 @@
                             var swap=data.swap;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < swap.length; i++) {
-                                ul.append("<inline>总交换分区</inline><span>: "+swap[i].total+"MiB</span><br>");
                                 ul.append("<inline>已用百分比</inline><span>: "+swap[i].percent+"%</span><br>");
+                                ul.append("<inline>总交换分区</inline><span>: "+swap[i].total+"MiB</span><br>");
                                 ul.append("<inline>已用大小</inline><span>: "+swap[i].used+"MiB</span><br>");
                                 ul.append("<inline>可用大小</inline><span>: "+swap[i].free+"MiB</span><br>");
                             }
@@ -502,8 +502,8 @@
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < disk.length; i++) {
                         ul.append("<li>"+disk[i].path+"</li>");
-                        ul.append("<inline>总磁盘</inline><span>: "+disk[i].total+"GiB</span><br>");
                         ul.append("<inline>已用百分比</inline><span>: "+disk[i].percent+"%</span><br>");
+                        ul.append("<inline>总磁盘大小</inline><span>: "+disk[i].total+"GiB</span><br>");
                         ul.append("<inline>已用大小</inline><span>: "+disk[i].used+"GiB</span><br>");
                         ul.append("<inline>可用大小</inline><span>: "+disk[i].free+"GiB</span><br>");
                     }
@@ -525,8 +525,8 @@
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < disk.length; i++) {
                                 ul.append("<li>"+disk[i].path+"</li>");
-                                ul.append("<inline>总磁盘</inline><span>: "+disk[i].total+"GiB</span><br>");
                                 ul.append("<inline>已用百分比</inline><span>: "+disk[i].percent+"%</span><br>");
+                                ul.append("<inline>总磁盘大小</inline><span>: "+disk[i].total+"GiB</span><br>");
                                 ul.append("<inline>已用大小</inline><span>: "+disk[i].used+"GiB</span><br>");
                                 ul.append("<inline>可用大小</inline><span>: "+disk[i].free+"GiB</span><br>");
                             }
