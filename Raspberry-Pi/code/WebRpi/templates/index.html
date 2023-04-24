@@ -182,7 +182,7 @@
                 <button id = "RefreshCPU">Refresh</button>
             </span>
         </div>
-        <div class = "row-5em" id = "CpuInfo" style = "display: none;">
+        <div class = "row-6em" id = "CpuInfo" style = "display: none;">
             <p id = "CPU"></p>
         </div>
         <!-- 显示/隐藏按钮 -->
@@ -355,8 +355,8 @@
                     var mem=data.mem;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < mem.length; i++) {
-                        ul.append("<inline>已用百分比</inline><span>: "+mem[i].percent+"%</span><br>");
                         ul.append("<inline>总物理内存</inline><span>: "+mem[i].total+"MiB</span><br>");
+                        ul.append("<inline>已用百分比</inline><span>: "+mem[i].percent+"%</span><br>");
                         ul.append("<inline>已用大小</inline><span>: "+mem[i].used+"MiB</span><br>");
                         ul.append("<inline>可用大小</inline><span>: "+mem[i].available+"MiB</span><br>");
                     }
@@ -377,8 +377,8 @@
                             var mem=data.mem;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < mem.length; i++) {
-                                ul.append("<inline>已用百分比</inline><span>: "+mem[i].percent+"%</span><br>");
                                 ul.append("<inline>总物理内存</inline><span>: "+mem[i].total+"MiB</span><br>");
+                                ul.append("<inline>已用百分比</inline><span>: "+mem[i].percent+"%</span><br>");
                                 ul.append("<inline>已用大小</inline><span>: "+mem[i].used+"MiB</span><br>");
                                 ul.append("<inline>可用大小</inline><span>: "+mem[i].available+"MiB</span><br>");
                             }
@@ -428,8 +428,8 @@
                     var swap=data.swap;
                     var ul=$("<ul></ul>");
                     for (var i = 0; i < swap.length; i++) {
-                        ul.append("<inline>已用百分比</inline><span>: "+swap[i].percent+"%</span><br>");
                         ul.append("<inline>总交换分区</inline><span>: "+swap[i].total+"MiB</span><br>");
+                        ul.append("<inline>已用百分比</inline><span>: "+swap[i].percent+"%</span><br>");
                         ul.append("<inline>已用大小</inline><span>: "+swap[i].used+"MiB</span><br>");
                         ul.append("<inline>可用大小</inline><span>: "+swap[i].free+"MiB</span><br>");
                     }
@@ -450,8 +450,8 @@
                             var swap=data.swap;
                             var ul=$("<ul></ul>");
                             for (var i = 0; i < swap.length; i++) {
-                                ul.append("<inline>已用百分比</inline><span>: "+swap[i].percent+"%</span><br>");
                                 ul.append("<inline>总交换分区</inline><span>: "+swap[i].total+"MiB</span><br>");
+                                ul.append("<inline>已用百分比</inline><span>: "+swap[i].percent+"%</span><br>");
                                 ul.append("<inline>已用大小</inline><span>: "+swap[i].used+"MiB</span><br>");
                                 ul.append("<inline>可用大小</inline><span>: "+swap[i].free+"MiB</span><br>");
                             }
